@@ -1,0 +1,71 @@
+.v-config-reglas .reglas {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 16px;
+  margin-top: 12px;
+  align-items: start;
+}
+
+.v-config-reglas .reglas .tarjeta {
+  margin-bottom: 14px;
+}
+
+.v-config-reglas .deslizador {
+  display: block;
+  margin-bottom: 22px;
+}
+
+.v-config-reglas .deslizador span {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-size: clamp(0.875rem, 0.80rem, 2.4rem);
+  font-weight: bold;
+}
+
+.v-config-reglas .deslizador b {
+  font-weight: normal;
+  font-size: clamp(0.875rem, 0.70rem, 2.4rem);
+}
+
+.v-config-reglas .deslizador small {
+  display: block;
+  margin-top: 4px;
+  font-size: clamp(0.875rem, 0.65rem, 2.4rem);
+  color: var(--texto-suave);
+}
+
+.v-config-reglas .deslizador--fila {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.v-config-reglas .deslizador--fila span {
+  margin: 0;
+}
+
+.v-config-reglas .deslizador--fila input {
+  flex: 1;
+}
+
+.v-config-reglas .interruptor--fila {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 18px;
+  font-size: clamp(0.875rem, 0.80rem, 2.4rem);
+  font-weight: normal;
+}
+
+.v-config-reglas .reglas .casilla {
+  margin-bottom: 12px;
+  font-size: clamp(0.875rem, 0.80rem, 2.4rem);
+}
+
+@media (max-width: 900px) {
+.v-config-reglas .reglas {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+}

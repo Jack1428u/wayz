@@ -1,0 +1,57 @@
+.v-gerencia-benchmarking .filtros select {
+  width: 120px;
+  min-height: 44px;
+  padding: 0 10px;
+  font: inherit;
+  font-size: clamp(0.875rem, 0.90rem, 2.4rem);
+  background: var(--superficie);
+  border: 1px solid var(--borde-campo);
+  border-radius: 8px;
+  box-shadow: var(--sombra-campo);
+}
+
+.v-gerencia-benchmarking .radar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.v-gerencia-benchmarking .radar svg {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.v-gerencia-benchmarking .r-gris {
+  fill: none;
+  stroke: var(--eje);
+  stroke-width: 0.8;
+}
+
+.v-gerencia-benchmarking .r-empresa {
+  fill: none;
+  stroke: var(--azul-grafico);
+  stroke-width: 1.6;
+}
+
+.v-gerencia-benchmarking .r-sector {
+  fill: none;
+  stroke: var(--azul-grafico);
+  stroke-width: 1;
+  stroke-dasharray: 4 3;
+}
+
+.v-gerencia-benchmarking .nota {
+  margin: 8px 0 0;
+  font-size: clamp(0.875rem, 0.75rem, 2.4rem);
+  color: var(--texto-suave);
+}
+
+@media (max-width: 900px) {
+.v-gerencia-benchmarking .radar {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+}

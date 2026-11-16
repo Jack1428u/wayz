@@ -1,0 +1,17 @@
+/* Tarjeta y resumen del Agente Wayz. */
+.agente { margin-bottom: 1rem; border-left: 8px solid var(--pista-fuerte); }
+.agente--rojo { border-left-color: var(--rojo); }
+.agente--ambar { border-left-color: var(--ambar); }
+.agente--verde { border-left-color: var(--verde); }
+.agente__cabecera { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem; }
+.agente h2 { margin: 0; }
+.agente h3 { margin: 0.8rem 0 0.2rem; font-size: 1rem; }
+.agente__resumen { margin: 0.6rem 0 0; font-weight: 600; }
+.agente__motivos { margin: 0; padding-left: 1.2rem; }
+.agente__accion { margin: 0.8rem 0 0; padding: 0.6rem 0.8rem; background: var(--fondo-suave); border-radius: 0.4rem; }
+.agente__pie { margin: 0.8rem 0 0; font-size: 0.9rem; color: var(--texto-suave); }
+
+/* Resumen en el panel del analista. */
+.resumen-agente { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 1rem; margin: 0 0 1rem; padding: 0.8rem 1rem; background: var(--superficie); border: 1px solid var(--borde); border-left: 8px solid var(--azul-grafico); border-radius: 0.6rem; }
+.resumen-agente strong { color: var(--titulo); }
+.resumen-agente small { flex-basis: 100%; color: var(--texto-suave); }

@@ -1,0 +1,71 @@
+/* Temas de lectura (pantalla «Preferencias de lectura»). Solo redefinen tokens; ninguna vista cambia.
+   Se activan con <html data-tema="...">. */
+
+/* El deslizador de contraste endurece texto y bordes sin cambiar de tema. */
+:root {
+  --texto-suave: color-mix(in srgb, #000 var(--fuerza-contraste), #5b6779);
+  --borde-campo: color-mix(in srgb, #000 var(--fuerza-contraste), #94a3b8);
+}
+
+:root[data-tema='calida'] {
+  --fondo-app: #f5eddf; --fondo-panel: #fbf5ea; --fondo-suave: #eadfca; --superficie: #fffaf0;
+  --texto: #2a2016; --etiqueta: #3a2d1e; --titulo: #5a2d0c; --enlace: #8a3b00;
+  --borde: #cdb994; --resalte: #f3e3bf; --pista: #dccdae; --grilla: #e8dcc3;
+  --azul-oscuro: #6b3410; --azul-hover: #53280c; --borde-boton: #6b3410;
+  --navy-header: #4a2a12; --navy-lateral: #3a200d; --navy-activo: #5c3a1e;
+  --azul-grafico: #8a3b00;
+}
+
+:root[data-tema='oscura'] {
+  --fondo-app: #0b1220; --fondo-panel: #111a2c; --fondo-suave: #1c2740; --superficie: #16213a;
+  --texto: #f1f5f9; --etiqueta: #e2e8f0; --titulo: #bfd3ff; --enlace: #9db7ff;
+  --borde: #3b4a68; --borde-boton: #9db7ff; --borde-error: #8ea0bf;
+  --azul-oscuro: #3b6cf0; --azul-hover: #5a82f5;
+  --resalte: #1f3566; --pista: #34425f; --pista-fuerte: #5d6f92; --barra-suave: #3a4e7d; --eje: #8ea0bf; --grilla: #26324d;
+  --navy-header: #0a1020; --navy-lateral: #0a1020; --navy-activo: #1c2a4d;
+  --ambar-suave: #3a2f10; --ambar-texto: #ffd479; --rojo-suave: #3d1717; --rojo: #ff9a9a;
+  --verde-suave: #12301f; --verde: #7ee0a5; --azul-grafico: #7aa2ff; --oscuro-fijo: #cbd5e1;
+  --mapa-alto: #7a2c2c; --mapa-medio: #6b5418; --mapa-bajo: #1f5c3b; --foco: #ffe066;
+  --texto-suave: color-mix(in srgb, #fff var(--fuerza-contraste), #94a3b8);
+  --borde-campo: color-mix(in srgb, #fff var(--fuerza-contraste), #5d6f92);
+  color-scheme: dark;
+}
+
+/* Alto contraste clásico: fondo negro, texto blanco y acentos amarillos. */
+:root[data-tema='contraste'] {
+  --fondo-app: #000; --fondo-panel: #000; --fondo-suave: #1a1a1a; --superficie: #000;
+  --texto: #fff; --texto-suave: #fff; --etiqueta: #fff; --titulo: #ffeb3b; --enlace: #8ab4ff;
+  --borde: #fff; --borde-campo: #fff; --borde-error: #fff; --borde-boton: #ffeb3b;
+  --azul-oscuro: #ffeb3b; --azul-hover: #fff59d; --on-primario: #000;
+  --resalte: #003a75; --pista: #4a4a4a; --pista-fuerte: #bbb; --barra-suave: #666; --eje: #fff; --grilla: #444;
+  --navy-header: #000; --navy-lateral: #000; --navy-activo: #1a1a1a;
+  --ambar: #ffeb3b; --on-ambar: #000; --ambar-suave: #2e2a00; --ambar-texto: #ffeb3b;
+  --rojo: #ff8a8a; --rojo-suave: #330000; --verde: #69f0ae; --verde-suave: #003314;
+  --azul-grafico: #4fc3f7; --oscuro-fijo: #fff; --foco: #00e5ff;
+  --mapa-alto: #8b0000; --mapa-medio: #7a6100; --mapa-bajo: #006400;
+  --sombra-campo: none; --sombra-panel: none;
+  color-scheme: dark;
+}
+
+/* MODO SOL: pensado para leer con luz directa. Negro puro sobre blanco, bordes gruesos, sin sombras
+   ni grises claros (que se «lavan» con el reflejo) y texto más grueso. No cambia el tamaño de la letra. */
+:root[data-tema='sol'] {
+  --fondo-app: #fff; --fondo-panel: #fff; --fondo-suave: #ececec; --superficie: #fff;
+  --texto: #000; --texto-suave: #000; --etiqueta: #000; --titulo: #00112b; --enlace: #0a2ea8;
+  --borde: #000; --borde-campo: #000; --borde-error: #000; --borde-boton: #000;
+  --azul-oscuro: #00112b; --azul-hover: #000; --on-primario: #fff;
+  --resalte: #cfe0ff; --pista: #bdbdbd; --pista-fuerte: #000; --barra-suave: #9db7e6; --eje: #000; --grilla: #9e9e9e;
+  --navy-header: #00112b; --navy-lateral: #00112b; --navy-activo: #1d3557; --lateral-texto: #fff;
+  --ambar: #ffc400; --on-ambar: #000; --ambar-suave: #ffe9a8; --ambar-texto: #3d2400;
+  --rojo: #8b0000; --rojo-suave: #ffd6d6; --verde: #00531f; --verde-suave: #c8f2d6;
+  --azul-grafico: #0a3dbf; --foco: #6a00c2;
+  --mapa-alto: #f08a8a; --mapa-medio: #f2cf6a; --mapa-bajo: #8fd9a8;
+  --sombra-campo: none; --sombra-panel: none;
+}
+:root[data-tema='sol'] body { font-weight: 600; }
+:root[data-tema='sol'] :is(.tarjeta, .boton, input, select, textarea, .etiqueta, .kpi, .tabla-scroll, .dialogo) { border-width: 2px; }
+:root[data-tema='sol'] .tabla td { border-bottom-width: 2px; }
+:root[data-tema='contraste'] :is(.tarjeta, .boton, input, select, textarea, .kpi, .dialogo) { border-width: 2px; }
+
+/* «Resaltar evidencia crítica» (preferencias): se puede desactivar sin perder información. */
+:root[data-resaltar='false'] .resaltado { background: transparent; color: var(--texto); border: 2px dashed var(--texto); }

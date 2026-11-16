@@ -1,0 +1,48 @@
+.v-legal-dictamen .causal {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  margin: 14px 0;
+}
+
+.v-legal-dictamen .causal .tarjeta {
+  min-height: 180px;
+}
+
+.v-legal-dictamen .causal .casilla {
+  margin-bottom: 26px;
+  font-size: clamp(0.875rem, 0.85rem, 2.4rem);
+}
+
+.v-legal-dictamen .boton--relacionar {
+  min-height: 44px;
+  font-size: clamp(0.875rem, 0.85rem, 2.4rem);
+}
+
+.v-legal-dictamen .causal-ok {
+  margin: 0 0 10px;
+  padding: 12px 14px;
+  font-size: clamp(0.875rem, 0.85rem, 2.4rem);
+  font-weight: bold;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  box-shadow: var(--sombra-campo);
+}
+
+.v-legal-dictamen .advertencia {
+  margin: 0;
+  padding: 12px 14px;
+  font-size: clamp(0.875rem, 0.85rem, 2.4rem);
+  background: var(--superficie);
+  border: 1.5px dashed var(--borde-error);
+  border-radius: 8px;
+}
+
+@media (max-width: 900px) {
+.v-legal-dictamen .causal {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+}

@@ -1,0 +1,9 @@
+/* Ventana de ayuda contextual y botón «?» de la cabecera. */
+.ayuda-objetivo { margin: 0 0 0.8rem; line-height: 1.5; }
+.ayuda-pasos { margin: 0 0 1rem; padding-left: 1.4rem; line-height: 1.5; }
+.ayuda-pasos li { margin-bottom: 0.45rem; }
+.ayuda-subtitulo { margin: 0.6rem 0 0.4rem; font-size: 1rem; color: var(--titulo); }
+.ayuda-atajos { display: grid; gap: 0.35rem; margin: 0 0 1rem; }
+.ayuda-atajos div { display: flex; align-items: baseline; gap: 0.8rem; }
+.ayuda-atajos dt { min-width: 3.2rem; }
+.ayuda-atajos dd { margin: 0; }

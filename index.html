@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es" data-tema="clara">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Wayz: plataforma de detección de fraude en seguros para aseguradoras medianas, agencias y MGAs.">
+  <meta name="theme-color" content="#1b2f55">
+  <title>Wayz</title>
+  <link rel="icon" type="image/png" href="/src/assets/logo_sin_letras.png">
+</head>
+<body>
+  <a class="saltar" href="#contenido-principal" data-saltar>Saltar al contenido principal</a>
+
+  <!-- Aquí se dibuja toda la aplicación -->
+  <div id="app"></div>
+
+  <!-- Regiones para anunciar cambios a lectores de pantalla y mostrar avisos -->
+  <div id="avisos" class="solo-lectores" role="status" aria-live="polite" aria-atomic="true"></div>
+  <div id="toasts" role="region" aria-label="Avisos"></div>
+
+  <noscript><p style="padding:1rem">Wayz necesita JavaScript para funcionar. Actívalo en tu navegador e inténtalo de nuevo.</p></noscript>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

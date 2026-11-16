@@ -1,0 +1,64 @@
+.v-centro-comando .grafico-y-alertas {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.v-centro-comando .grilla line {
+  stroke: var(--grilla);
+}
+
+.v-centro-comando .area {
+  fill: url(#relleno);
+}
+
+.v-centro-comando .linea {
+  fill: none;
+  stroke: var(--azul-grafico);
+  stroke-width: 2;
+}
+
+.v-centro-comando .puntos circle {
+  fill: var(--blanco);
+  stroke: var(--azul-grafico);
+  stroke-width: 1.5;
+}
+
+.v-centro-comando .nota {
+  margin: 4px 0 0;
+  font-size: clamp(0.875rem, 0.85rem, 2.4rem);
+  color: var(--texto-suave);
+}
+
+.v-centro-comando .alerta {
+  display: flex;
+  align-items: center;
+  height: 72px;
+  margin-bottom: 9px;
+  padding: 0 12px;
+  font-size: clamp(0.875rem, 0.95rem, 2.4rem);
+  color: var(--texto);
+  text-decoration: none;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  box-shadow: var(--sombra-campo);
+}
+
+.v-centro-comando .alerta--ambar {
+  background: var(--ambar-suave);
+  border-color: var(--ambar);
+  border-left: 4px solid var(--ambar);
+}
+
+@media (max-width: 900px) {
+.v-centro-comando .kpis {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.v-centro-comando .grafico-y-alertas {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+}

@@ -1,0 +1,41 @@
+.v-expediente-similares .similares {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.v-expediente-similares .filtro {
+  width: 200px;
+  height: 28px;
+  margin-bottom: 12px;
+  padding: 0 8px;
+  font: inherit;
+  font-size: clamp(0.875rem, 0.90rem, 2.4rem);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  box-shadow: var(--sombra-campo);
+}
+
+.v-expediente-similares .red {
+  width: 100%;
+  height: auto;
+  margin: 8px 0;
+}
+
+.v-expediente-similares .aviso-punteado {
+  margin: 12px 0 0;
+  padding: 18px 12px;
+  font-size: clamp(0.875rem, 0.90rem, 2.4rem);
+  background: var(--ambar-suave);
+  border-left: 4px solid var(--ambar);
+  border-radius: 6px;
+}
+
+@media (max-width: 900px) {
+.v-expediente-similares .similares {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+}

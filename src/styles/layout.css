@@ -1,0 +1,116 @@
+/* Estructura: cabecera + menú lateral + contenido. En pantallas estrechas el menú pasa a ser un panel que se abre con ☰. */
+
+.app {
+  display: grid;
+  grid-template-columns: var(--ancho-lateral) minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  min-height: 100vh;
+}
+
+/* ---------- Cabecera ---------- */
+.cabecera {
+  grid-column: 1 / -1;
+  display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap;
+  padding: 0.6rem 1.1rem;
+  color: #fff; background: var(--navy-header);
+}
+.cabecera__menu {
+  display: none; min-width: var(--alto-toque); min-height: var(--alto-toque); font-size: 1.4rem; color: #fff;
+  background: transparent; border: 2px solid #fff; border-radius: 0.5rem; cursor: pointer;
+}
+.cabecera__marca { display: flex; align-items: center; padding: 0.25rem 0.6rem; background: #fff; border-radius: 0.5rem; }
+.cabecera__marca img { display: block; }
+
+.cabecera__buscar { position: relative; flex: 1 1 14rem; max-width: 30rem; margin-left: 1rem; }
+.cabecera__buscar input {
+  width: 100%; padding: 0 3rem 0 1rem; font: inherit; color: #000; background: #fff;
+  border: 2px solid transparent; border-radius: 1.4rem;
+}
+.cabecera__lupa {
+  position: absolute; right: 0; top: 0; min-width: var(--alto-toque); min-height: var(--alto-toque);
+  background: none; border: 0; cursor: pointer;
+}
+
+.cabecera__sol {
+  margin-left: auto; min-height: var(--alto-toque); padding: 0 1rem; font: inherit; font-weight: 700; color: #fff;
+  background: transparent; border: 2px solid #fff; border-radius: 1.4rem; cursor: pointer;
+}
+.cabecera__sol[aria-pressed='true'] { color: #000; background: #ffc400; border-color: #ffc400; }
+
+.cabecera__ayuda {
+  display: grid; place-items: center; min-width: var(--alto-toque); min-height: var(--alto-toque); font: inherit; font-size: 1.15rem;
+  font-weight: 800; color: #fff; background: transparent; border: 2px solid #fff; border-radius: 50%; cursor: pointer;
+}
+.cabecera__ayuda:hover { background: rgba(255, 255, 255, 0.18); }
+.cabecera__campana {
+  position: relative; display: grid; place-items: center; min-width: var(--alto-toque); min-height: var(--alto-toque);
+  font-size: 1.1rem; text-decoration: none; background: rgba(255, 255, 255, 0.14); border-radius: 50%;
+}
+.insignia {
+  position: absolute; top: -0.2rem; right: -0.2rem; min-width: 1.35rem; padding: 0 0.3rem; font-size: 0.8rem;
+  font-weight: 700; line-height: 1.35rem; text-align: center; color: #fff; background: var(--rojo); border: 2px solid var(--navy-header); border-radius: 1rem;
+}
+
+.menu-usuario { position: relative; }
+.cabecera__usuario {
+  max-width: 19rem; min-height: var(--alto-toque); padding: 0 1.1rem; font: inherit; font-weight: 700;
+  color: var(--on-ambar); background: var(--ambar); border: 2px solid var(--ambar); border-radius: 1.4rem; cursor: pointer;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.menu-usuario__lista {
+  position: absolute; right: 0; top: calc(100% + 0.4rem); z-index: 40; width: 15rem; margin: 0; padding: 0.3rem; list-style: none;
+  color: var(--texto); background: var(--superficie); border: 2px solid var(--borde-campo); border-radius: 0.6rem; box-shadow: var(--sombra-panel);
+}
+.menu-usuario__lista a, .menu-usuario__lista button {
+  display: flex; align-items: center; width: 100%; min-height: var(--alto-toque); padding: 0 0.8rem; font: inherit;
+  color: var(--texto); text-align: left; text-decoration: none; background: none; border: 0; border-radius: 0.4rem; cursor: pointer;
+}
+.menu-usuario__lista a:hover, .menu-usuario__lista button:hover { background: var(--resalte); }
+
+/* ---------- Menú lateral ---------- */
+.lateral { display: flex; flex-direction: column; gap: 0.4rem; padding: 1rem 0.6rem; background: var(--navy-lateral); }
+.lateral a {
+  display: flex; align-items: center; gap: 0.8rem; min-height: var(--alto-toque); padding: 0 1rem; font-size: 1rem;
+  color: var(--lateral-texto); text-decoration: none; border-radius: 0.4rem;
+}
+.lateral a:hover { background: rgba(255, 255, 255, 0.1); }
+.lateral a[aria-current='page'] { font-weight: 700; color: #fff; background: var(--navy-activo); box-shadow: inset 6px 0 0 var(--ambar); }
+.lateral small { margin-top: auto; padding: 0 0.5rem; font-size: 0.85rem; line-height: 1.4; color: var(--lateral-texto); opacity: 0.85; }
+.velo { position: fixed; inset: 0; z-index: 25; background: rgba(0, 0, 0, 0.55); }
+
+/* ---------- Contenido ---------- */
+.contenido { min-width: 0; background: var(--fondo-app); }
+.pestanas { display: flex; flex-wrap: wrap; gap: 0 1rem; padding: 0 1.4rem; background: var(--superficie); border-bottom: 2px solid var(--borde); }
+.pestanas a {
+  display: flex; align-items: center; min-height: var(--alto-toque); padding: 0 0.9rem; font-weight: 600;
+  color: var(--texto); text-decoration: none; border-bottom: 4px solid transparent;
+}
+.pestanas a:hover { background: var(--resalte); }
+.pestanas a[aria-current='page'] { font-weight: 700; color: var(--titulo); border-bottom-color: var(--ambar); }
+
+.pagina { padding: 1rem 1.4rem 2.5rem; }
+.pagina__titulo { margin: 0 0 0.3rem; font-size: 1.6rem; }
+.migas { margin: 0 0 0.3rem; font-size: 0.9rem; color: var(--texto-suave); }
+.migas a { color: inherit; }
+
+/* ---------- Pantallas estrechas (móvil y tablet) ---------- */
+@media (max-width: 56rem) {
+  .app { grid-template-columns: minmax(0, 1fr); }
+  .cabecera__menu { display: inline-flex; align-items: center; justify-content: center; }
+  .cabecera__buscar { order: 9; flex: 1 1 100%; max-width: none; margin: 0; }
+  .cabecera__sol { margin-left: 0; }
+  .cabecera__usuario { max-width: 12rem; }
+  .lateral {
+    position: fixed; inset: 0 auto 0 0; z-index: 30; width: min(19rem, 86vw); padding-top: 1.2rem;
+    transform: translateX(-102%); transition: transform 0.2s;
+  }
+  .app--menu .lateral { transform: none; }
+  .pagina { padding: 1rem 1rem 2rem; }
+  .pestanas { padding: 0 0.5rem; overflow-x: auto; flex-wrap: nowrap; }
+  .pestanas a { white-space: nowrap; }
+}
+@media (max-width: 34rem) {
+  .cabecera__sol span:not([aria-hidden], [data-estado]) { display: none; }
+  .cabecera__nombre { display: none; }
+  .cabecera__usuario::before { content: 'Cuenta'; }
+}

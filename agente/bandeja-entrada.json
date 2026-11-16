@@ -1,0 +1,89 @@
+[
+  {
+    "caso": {
+      "id": "RCL-2070",
+      "asegurado": "Asegurado H",
+      "reclamante": "Diego Ramos",
+      "tipo": "Vehicular",
+      "riesgo": "Medio",
+      "urgencia": "Media",
+      "plazo": 9,
+      "estado": "Nuevo",
+      "poliza": "PL-020115",
+      "monto": 22000,
+      "fecha": "11/11/2026"
+    },
+    "expediente": {
+      "diasDesdeInicioPoliza": 19,
+      "valorAsegurado": 18000,
+      "reclamosPrevios": 3,
+      "documentos": {
+        "entregados": [
+          "Fotos del vehículo"
+        ],
+        "faltantes": [
+          "Informe de peritaje",
+          "Denuncia policial"
+        ]
+      },
+      "inconsistencias": [
+        "La dirección del taller no coincide con la factura"
+      ],
+      "listas": [],
+      "vinculos": [
+        {
+          "caso": "RCL-2038",
+          "motivo": "mismo teléfono"
+        }
+      ]
+    }
+  }
+]
+[
+  {
+    "caso": {
+      "id": "RCL-2145",
+      "asegurado": "Asegurado C",
+      "reclamante": "María Fernanda López",
+      "tipo": "Vehicular",
+      "riesgo": "Alto",
+      "urgencia": "Alta",
+      "plazo": 5,
+      "estado": "En revisión",
+      "poliza": "PL-031478",
+      "monto": 48500,
+      "fecha": "03/09/2026"
+    },
+    "expediente": {
+      "diasDesdeInicioPoliza": 12,
+      "valorAsegurado": 42000,
+      "reclamosPrevios": 4,
+      "documentos": {
+        "entregados": [
+          "Fotos del vehículo",
+          "Factura del taller"
+        ],
+        "faltantes": [
+          "Informe de peritaje",
+          "Denuncia policial",
+          "Certificado de cobertura"
+        ]
+      },
+      "inconsistencias": [
+        "La fecha de la factura es anterior al siniestro",
+        "El número de placa no coincide con la póliza"
+      ],
+      "listas": [],
+      "vinculos": [
+        {
+          "caso": "RCL-2091",
+          "motivo": "mismo taller"
+        },
+        {
+          "caso": "RCL-2117",
+          "motivo": "documento duplicado"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,143 @@
+.v-expediente-inconsistencias .subtitulo-seccion {
+  margin: 0 0 10px;
+  font-size: clamp(0.875rem, 1.10rem, 2.4rem);
+  color: var(--titulo);
+}
+
+.v-expediente-inconsistencias .incons {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.v-expediente-inconsistencias .lista-incons {
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.v-expediente-inconsistencias .lista-incons li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  padding: 9px 12px;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  box-shadow: var(--sombra-campo);
+}
+
+.v-expediente-inconsistencias .lista-incons li div {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere; /* nombres de archivo largos (con guiones bajos) no deben ensanchar la pantalla */
+}
+
+.v-expediente-inconsistencias .lista-incons b, .v-expediente-inconsistencias .lista-incons small {
+  display: block;
+}
+
+.v-expediente-inconsistencias .lista-incons b {
+  font-size: clamp(0.875rem, 0.90rem, 2.4rem);
+}
+
+.v-expediente-inconsistencias .lista-incons small {
+  margin-top: 2px;
+  font-size: clamp(0.875rem, 0.80rem, 2.4rem);
+  color: var(--texto-suave);
+}
+
+.v-expediente-inconsistencias .icono-doc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: var(--etiqueta);
+  background: var(--fondo-suave);
+  border-radius: 5px;
+}
+
+.v-expediente-inconsistencias .acciones-incons {
+  display: flex;
+  gap: 10px;
+}
+
+.v-expediente-inconsistencias .columna-graficos {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.v-expediente-inconsistencias .barras {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  height: 130px;
+  padding: 0 6px;
+  border-left: 1px solid var(--eje);
+  border-bottom: 1px solid var(--eje);
+}
+
+.v-expediente-inconsistencias .barra {
+  flex: 1;
+  background: var(--barra-suave);
+  border-radius: 3px 3px 0 0;
+}
+
+.v-expediente-inconsistencias .barra--pico {
+  background: var(--azul-grafico);
+}
+
+.v-expediente-inconsistencias .tarjeta small {
+  display: block;
+  margin-top: 6px;
+  font-size: clamp(0.875rem, 0.80rem, 2.4rem);
+  color: var(--texto-suave);
+}
+
+.v-expediente-inconsistencias .fechas {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin: 14px 10px 8px;
+}
+
+.v-expediente-inconsistencias .fechas::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 5px;
+  height: 2px;
+  background: var(--eje);
+}
+
+.v-expediente-inconsistencias .fechas span {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  background: var(--superficie);
+  border: 1.5px solid var(--etiqueta);
+  border-radius: 50%;
+}
+
+.v-expediente-inconsistencias .fechas .sospechosa {
+  background: var(--azul-oscuro);
+}
+
+.v-expediente-inconsistencias .fechas__texto {
+  margin: 0;
+  font-size: clamp(0.875rem, 0.85rem, 2.4rem);
+  font-weight: bold;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+.v-expediente-inconsistencias .incons {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+}

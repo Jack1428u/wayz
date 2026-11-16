@@ -1,0 +1,94 @@
+.v-nuevo-reclamo .formulario {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.v-nuevo-reclamo .adjuntos, .v-nuevo-reclamo .acciones {
+  grid-column: 1 / -1;
+}
+
+.v-nuevo-reclamo .fila {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.v-nuevo-reclamo .campo--corto {
+  flex: 0 0 90px !important;
+}
+
+.v-nuevo-reclamo .boton--verificar {
+  margin-bottom: 9px;
+  min-height: 44px;
+}
+
+.v-nuevo-reclamo .verificado {
+  margin: 0 0 9px;
+  padding: 6px 10px;
+  font-size: clamp(0.875rem, 0.90rem, 2.4rem);
+  color: var(--verde);
+  background: var(--verde-suave);
+  border-radius: 6px;
+}
+
+.v-nuevo-reclamo .campo input.invalido {
+  border-color: var(--rojo);
+}
+
+.v-nuevo-reclamo .error-campo {
+  margin: 0;
+  font-size: clamp(0.875rem, 0.85rem, 2.4rem);
+  color: var(--rojo);
+}
+
+.v-nuevo-reclamo .adjuntos__cuerpo {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+
+.v-nuevo-reclamo .zona-carga {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 180px;
+  height: 70px;
+  font-size: clamp(0.875rem, 0.95rem, 2.4rem);
+  text-align: center;
+  color: var(--texto-suave);
+  border: 1.5px dashed var(--borde-error);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.v-nuevo-reclamo .carga {
+  flex: 1;
+  font-size: clamp(0.875rem, 0.90rem, 2.4rem);
+}
+
+.v-nuevo-reclamo .carga p {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 6px;
+}
+
+.v-nuevo-reclamo .carga small {
+  display: block;
+  margin-top: 6px;
+  color: var(--texto-suave);
+}
+
+.v-nuevo-reclamo .acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 14px;
+}
+
+@media (max-width: 900px) {
+.v-nuevo-reclamo .formulario {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+}

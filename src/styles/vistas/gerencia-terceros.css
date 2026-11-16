@@ -1,0 +1,55 @@
+.v-gerencia-terceros .barra-superior {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 12px 0 8px;
+}
+
+.v-gerencia-terceros .segmentos {
+  display: flex;
+  gap: 0;
+}
+
+.v-gerencia-terceros .segmentos .boton {
+  min-width: 120px;
+  min-height: 44px;
+  padding: 0;
+  font-size: clamp(0.875rem, 0.85rem, 2.4rem);
+  border-radius: 0;
+}
+
+.v-gerencia-terceros .segmentos .boton:first-child {
+  border-radius: 6px 0 0 6px;
+}
+
+.v-gerencia-terceros .segmentos .boton:last-child {
+  border-radius: 0 6px 6px 0;
+}
+
+.v-gerencia-terceros .filtros {
+  display: flex;
+  gap: 10px;
+}
+
+.v-gerencia-terceros .filtros select {
+  width: 100px;
+  min-height: 44px;
+  padding: 0 10px;
+  font: inherit;
+  font-size: clamp(0.875rem, 0.90rem, 2.4rem);
+  background: var(--superficie);
+  border: 1px solid var(--borde-campo);
+  border-radius: 8px;
+}
+
+.v-gerencia-terceros .subtitulo-seccion {
+  margin: 14px 0 6px;
+  font-size: clamp(0.875rem, 0.90rem, 2.4rem);
+  color: var(--titulo);
+}
+
+.v-gerencia-terceros .estrellas {
+  letter-spacing: 1px;
+  color: var(--etiqueta);
+}
+

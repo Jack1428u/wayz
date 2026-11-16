@@ -1,0 +1,44 @@
+.v-gerencia-reportes .regulatorios {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 16px;
+  margin: 12px 0 18px;
+  align-items: start;
+}
+
+.v-gerencia-reportes .fila {
+  display: flex;
+  gap: 12px;
+}
+
+.v-gerencia-reportes .campo--medio {
+  width: 50%;
+}
+
+.v-gerencia-reportes .boton--programar {
+  width: 100%;
+  min-height: 44px;
+  margin-top: 6px;
+}
+
+.v-gerencia-reportes .aviso-punteado {
+  margin: 14px 0 0;
+  padding: 18px 10px;
+  font-size: clamp(0.875rem, 0.80rem, 2.4rem);
+  background: var(--fondo-suave);
+  border: 1.5px dashed var(--borde-error);
+  border-radius: 6px;
+}
+
+.v-gerencia-reportes .subtitulo-seccion {
+  margin: 0 0 8px;
+  font-size: clamp(0.875rem, 0.90rem, 2.4rem);
+  color: var(--titulo);
+}
+
+@media (max-width: 900px) {
+.v-gerencia-reportes .regulatorios {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+}

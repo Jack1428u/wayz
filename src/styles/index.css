@@ -1,0 +1,9 @@
+/* Orden de carga: de lo general a lo específico. Las vistas importan su propio CSS desde su módulo. */
+@import './tokens.css';
+@import './temas.css';
+@import './base.css';
+@import './layout.css';
+@import './botones.css';
+@import './componentes.css';
+@import './compartido.css';
+@import './dialogos.css';

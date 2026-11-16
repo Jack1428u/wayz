@@ -1,0 +1,8 @@
+.v-nuevo-reclamo .ayuda { margin: 0 0 0.8rem; color: var(--texto-suave); }
+.v-nuevo-reclamo .verificado { margin: 0 0 0.8rem; padding: 0.6rem 0.9rem; font-weight: 700; color: var(--verde); background: var(--verde-suave); border: 2px solid var(--verde); border-radius: 0.4rem; }
+.v-nuevo-reclamo .zona-carga { cursor: pointer; }
+.v-nuevo-reclamo .zona-carga:focus-within, .v-nuevo-reclamo .zona-carga--sobre { background: var(--resalte); border-style: solid; border-color: var(--azul-grafico); }
+.v-nuevo-reclamo .lista-carga { flex: 1; margin: 0; padding: 0; list-style: none; }
+.v-nuevo-reclamo .lista-carga li { margin-bottom: 0.6rem; }
+.v-nuevo-reclamo .campo > span { font-size: 1rem; }
+.v-nuevo-reclamo .acciones .boton { min-width: 9rem; }

@@ -1,0 +1,162 @@
+{
+  "generado": "2026-11-16T01:20:10.047Z",
+  "modo": "gemini",
+  "modelo": "gemini-3.1-flash-lite",
+  "evaluaciones": {
+    "RCL-2041": {
+      "id": "RCL-2041",
+      "puntaje": 100,
+      "prioridad": "Crítica",
+      "resumen": "El reclamo presenta un riesgo crítico debido a múltiples inconsistencias documentales, un monto reclamado superior al asegurado y una coincidencia en listas de sancionados. Además, se detectó un vínculo con un caso previo que fue rechazado.",
+      "motivos": [
+        "Puntaje de riesgo máximo (100)",
+        "Inconsistencias en documentos y montos reclamados",
+        "Vínculo con caso rechazado previamente",
+        "Coincidencia en listas de sancionados"
+      ],
+      "accion": "Realizar una investigación exhaustiva y solicitar el informe de peritaje faltante, dado que el caso presenta múltiples inconsistencias y vínculos con un reclamo rechazado previamente.",
+      "herramientas": [
+        "calcular_riesgo",
+        "buscar_casos_similares",
+        "revisar_documentos",
+        "consultar_listas"
+      ],
+      "modo": "gemini",
+      "modelo": "gemini-3.1-flash-lite",
+      "fecha": "2026-11-16T01:18:57.041Z"
+    },
+    "RCL-2038": {
+      "id": "RCL-2038",
+      "puntaje": 49,
+      "prioridad": "Alta",
+      "resumen": "El reclamo presenta un riesgo alto debido a la vinculación con otros tres casos sospechosos y una inconsistencia en la dirección reportada. No se encontraron coincidencias en listas de sancionados, pero el historial del asegurado y los vínculos detectados requieren atención.",
+      "motivos": [
+        "Puntaje de riesgo de 49 (Alta)",
+        "Red de 3 casos vinculados detectada",
+        "Inconsistencia en la dirección en documentos",
+        "Historial de reclamos previos del asegurado"
+      ],
+      "accion": "Realizar una investigación detallada de los casos vinculados y verificar la dirección real del asegurado.",
+      "herramientas": [
+        "calcular_riesgo",
+        "buscar_casos_similares",
+        "revisar_documentos",
+        "consultar_listas"
+      ],
+      "modo": "gemini",
+      "modelo": "gemini-3.1-flash-lite",
+      "fecha": "2026-11-16T01:19:29.238Z"
+    },
+    "RCL-2052": {
+      "id": "RCL-2052",
+      "puntaje": 5,
+      "prioridad": "Baja",
+      "resumen": "El reclamo presenta un riesgo mínimo. Solo se requiere gestionar la entrega del documento faltante para proceder con el trámite normal.",
+      "motivos": [
+        "Puntaje de riesgo muy bajo",
+        "Solo falta un documento en el expediente"
+      ],
+      "accion": "Solicitar el documento faltante al asegurado para completar el expediente.",
+      "herramientas": [
+        "calcular_riesgo"
+      ],
+      "modo": "gemini",
+      "modelo": "gemini-3.1-flash-lite",
+      "fecha": "2026-11-16T01:19:40.873Z"
+    },
+    "RCL-2047": {
+      "id": "RCL-2047",
+      "puntaje": 65,
+      "prioridad": "Alta",
+      "resumen": "El reclamo presenta un riesgo alto debido a que el monto solicitado excede el valor asegurado y el siniestro ocurrió apenas 28 días después de la contratación. Además, faltan documentos clave y se detectó una inconsistencia en la fecha de la póliza.",
+      "motivos": [
+        "Monto reclamado superior al valor asegurado",
+        "Siniestro ocurrido poco después de contratar la póliza",
+        "Documentación incompleta",
+        "Inconsistencia en la fecha de contratación"
+      ],
+      "accion": "Solicitar la historia clínica y el informe del beneficiario para aclarar la inconsistencia en la fecha de contratación.",
+      "herramientas": [
+        "calcular_riesgo",
+        "buscar_casos_similares",
+        "revisar_documentos",
+        "consultar_listas"
+      ],
+      "modo": "gemini",
+      "modelo": "gemini-3.1-flash-lite",
+      "fecha": "2026-11-16T01:20:10.047Z"
+    },
+    "RCL-2033": {
+      "id": "RCL-2033",
+      "puntaje": 0,
+      "prioridad": "Baja",
+      "resumen": "El reclamo RCL-2033 presenta un puntaje de riesgo de 0. No se detectaron factores de alerta en el análisis inicial.",
+      "motivos": [
+        "Puntaje de riesgo nulo"
+      ],
+      "accion": "Proceder con el trámite normal del reclamo.",
+      "herramientas": [
+        "calcular_riesgo"
+      ],
+      "modo": "gemini",
+      "modelo": "gemini-3.1-flash-lite",
+      "fecha": "2026-11-16T01:08:36.639Z"
+    },
+    "RCL-2029": {
+      "id": "RCL-2029",
+      "puntaje": 0,
+      "prioridad": "Baja",
+      "resumen": "El reclamo RCL-2029 presenta un puntaje de riesgo de 0, por lo que no se detectaron indicadores de fraude. Se recomienda continuar con el proceso estándar.",
+      "motivos": [
+        "Puntaje de riesgo nulo"
+      ],
+      "accion": "Proceder con el trámite normal del reclamo.",
+      "herramientas": [
+        "calcular_riesgo"
+      ],
+      "modo": "gemini",
+      "modelo": "gemini-3.1-flash-lite",
+      "fecha": "2026-11-16T01:08:48.722Z"
+    },
+    "RCL-2025": {
+      "id": "RCL-2025",
+      "puntaje": 0,
+      "prioridad": "Baja",
+      "resumen": "El reclamo presenta un puntaje de riesgo de 0, lo que indica que no hay indicadores de fraude detectados. Se recomienda continuar con el proceso estándar.",
+      "motivos": [
+        "Puntaje de riesgo muy bajo (0)"
+      ],
+      "accion": "Cerrar el caso o proceder con el trámite normal.",
+      "herramientas": [
+        "calcular_riesgo"
+      ],
+      "modo": "gemini",
+      "modelo": "gemini-3.1-flash-lite",
+      "fecha": "2026-11-16T01:09:00.797Z"
+    },
+    "RCL-2070": {
+      "id": "RCL-2070",
+      "puntaje": 92,
+      "prioridad": "Crítica",
+      "resumen": "Prioridad crítica (92/100). Señales principales: Monto reclamado (S/ 22000) mayor al valor asegurado (S/ 18000); Siniestro 19 días después de contratar la póliza.",
+      "motivos": [
+        "Monto reclamado (S/ 22000) mayor al valor asegurado (S/ 18000)",
+        "Siniestro 19 días después de contratar la póliza",
+        "3 reclamos previos del mismo asegurado",
+        "1 caso(s) vinculado(s) por datos en común"
+      ],
+      "accion": "Revisar hoy con prioridad. Verificar los casos vinculados y evaluar derivar a Legal antes de pagar.",
+      "herramientas": [
+        "calcular_riesgo",
+        "buscar_casos_similares",
+        "revisar_documentos",
+        "consultar_listas"
+      ],
+      "modo": "reglas",
+      "redSospechosa": false,
+      "documentosFaltantes": 2,
+      "coincidenciaListas": false,
+      "fecha": "2026-11-13T19:20:32.005Z"
+    }
+  }
+}

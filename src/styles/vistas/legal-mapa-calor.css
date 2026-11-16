@@ -1,0 +1,82 @@
+.v-legal-mapa-calor .filtros-nivel {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.v-legal-mapa-calor .filtros-nivel .boton {
+  min-width: 70px;
+  min-height: 44px;
+  padding: 0;
+  font-size: clamp(0.875rem, 0.90rem, 2.4rem);
+}
+
+.v-legal-mapa-calor .mapa {
+  display: grid;
+  grid-template-columns: minmax(0, 2.5fr) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.v-legal-mapa-calor .clausula {
+  margin-bottom: 10px;
+  font-size: clamp(0.875rem, 0.80rem, 2.4rem);
+  font-weight: bold;
+}
+
+.v-legal-mapa-calor .barra-cl {
+  height: 24px;
+  margin-top: 3px;
+  border-radius: 4px;
+}
+
+.v-legal-mapa-calor .barra-cl--alto {
+  background: var(--mapa-alto);
+  border-left: 4px solid var(--rojo);
+}
+
+.v-legal-mapa-calor .barra-cl--medio {
+  background: var(--mapa-medio);
+  border-left: 4px solid var(--ambar);
+}
+
+.v-legal-mapa-calor .barra-cl--bajo {
+  background: var(--mapa-bajo);
+  border-left: 4px solid var(--verde);
+}
+
+.v-legal-mapa-calor .leyenda {
+  display: flex;
+  gap: 40px;
+  font-size: clamp(0.875rem, 0.80rem, 2.4rem);
+}
+
+.v-legal-mapa-calor .leyenda i {
+  display: inline-block;
+  width: 12px;
+  height: 10px;
+  margin-right: 4px;
+  border-radius: 2px;
+}
+
+.v-legal-mapa-calor .detalle {
+  margin: 0 0 8px;
+  font-size: clamp(0.875rem, 0.80rem, 2.4rem);
+  color: var(--texto-suave);
+}
+
+.v-legal-mapa-calor .aviso-punteado {
+  margin: 0;
+  padding: 8px;
+  font-size: clamp(0.875rem, 0.80rem, 2.4rem);
+  background: var(--fondo-suave);
+  border: 1.5px dashed var(--borde-error);
+  border-radius: 6px;
+}
+
+@media (max-width: 900px) {
+.v-legal-mapa-calor .mapa {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+}

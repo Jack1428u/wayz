@@ -1,0 +1,38 @@
+.v-legal-paquete .paquete {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.9fr);
+  gap: 16px;
+  margin-top: 12px;
+  align-items: start;
+}
+
+.v-legal-paquete .paquete .casilla {
+  margin-bottom: 22px;
+  font-size: clamp(0.875rem, 0.85rem, 2.4rem);
+}
+
+.v-legal-paquete .campo--destino {
+  width: 160px;
+}
+
+.v-legal-paquete .indice {
+  min-height: 190px;
+  margin-bottom: 12px;
+}
+
+.v-legal-paquete .indice p {
+  margin: 0 0 16px;
+  font-size: clamp(0.875rem, 0.80rem, 2.4rem);
+}
+
+.v-legal-paquete .boton--ancho {
+  width: 100%;
+  min-height: 44px;
+}
+
+@media (max-width: 900px) {
+.v-legal-paquete .paquete {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+}

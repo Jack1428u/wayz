@@ -1,0 +1,81 @@
+.v-legal-visor .herramientas {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0 14px;
+}
+
+.v-legal-visor .herramientas .boton {
+  min-width: 70px;
+  min-height: 44px;
+  padding: 0;
+  font-size: clamp(0.875rem, 0.90rem, 2.4rem);
+}
+
+.v-legal-visor .visor-doble {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr) minmax(0, 0.7fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.v-legal-visor .rotulo {
+  margin: 0 0 6px;
+  font-size: clamp(0.875rem, 0.85rem, 2.4rem);
+  color: var(--etiqueta);
+}
+
+.v-legal-visor .hoja {
+  position: relative;
+  height: 270px;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(15, 23, 41, 0.07);
+}
+
+.v-legal-visor .lupa {
+  position: absolute;
+  top: 40px;
+  left: 36%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  font-size: clamp(0.875rem, 1.10rem, 2.4rem);
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.85);
+  border: 2px solid var(--navy-header);
+  border-radius: 50%;
+}
+
+.v-legal-visor .nota-adhesiva {
+  position: absolute;
+  right: 8%;
+  bottom: 6%;
+  width: 38%;
+  margin: 0;
+  padding: 10px;
+  font-size: clamp(0.875rem, 0.75rem, 2.4rem);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  box-shadow: var(--sombra-campo);
+}
+
+.v-legal-visor .anotaciones p {
+  margin: 0 0 10px;
+  padding: 14px 10px;
+  font-size: clamp(0.875rem, 0.80rem, 2.4rem);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  box-shadow: var(--sombra-campo);
+}
+
+@media (max-width: 900px) {
+.v-legal-visor .visor-doble {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+}

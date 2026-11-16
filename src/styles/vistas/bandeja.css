@@ -1,0 +1,61 @@
+.v-bandeja .filtros input {
+  flex: 1;
+  max-width: 300px;
+}
+
+.v-bandeja .filtros input, .v-bandeja .filtros select {
+  min-height: 44px;
+  padding: 0 10px;
+  font: inherit;
+  font-size: clamp(0.875rem, 1.00rem, 2.4rem);
+  background: var(--superficie);
+  border: 1px solid var(--borde-campo);
+  border-radius: 8px;
+  box-shadow: var(--sombra-campo);
+}
+
+.v-bandeja .filtros select {
+  width: 100px;
+}
+
+.v-bandeja .tabla-y-vista {
+  display: grid;
+  grid-template-columns: minmax(0, 2.1fr) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.v-bandeja .vista-previa {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 320px;
+}
+
+.v-bandeja .vista-previa__caso {
+  margin: 0 0 8px;
+  font-size: clamp(0.875rem, 1.05rem, 2.4rem);
+  font-weight: bold;
+}
+
+.v-bandeja .vista-previa__texto {
+  margin: 12px 0 0;
+  font-size: clamp(0.875rem, 0.90rem, 2.4rem);
+  color: var(--texto-suave);
+}
+
+.v-bandeja .vista-previa .boton {
+  width: 100%;
+  margin-top: auto;
+}
+
+@media (max-width: 900px) {
+.v-bandeja .tabla-y-vista {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.v-bandeja .filtros {
+  flex-wrap: wrap;
+}
+
+}

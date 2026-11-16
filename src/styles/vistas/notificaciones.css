@@ -1,0 +1,9 @@
+.v-notificaciones .encabezado { display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: center; justify-content: space-between; }
+.v-notificaciones .lista-notificaciones { margin: 1rem 0 0; padding: 0; list-style: none; }
+.v-notificaciones .notificacion {
+  display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.6rem; padding: 0.4rem 1rem; min-height: var(--alto-toque);
+  background: var(--superficie); border: 1px solid var(--borde); border-radius: 0.6rem;
+}
+.v-notificaciones .notificacion--nueva { border-left: 8px solid var(--ambar); }
+.v-notificaciones .notificacion a { flex: 1; color: var(--texto); }
+.v-notificaciones .notificacion__icono { font-size: 1.2rem; }

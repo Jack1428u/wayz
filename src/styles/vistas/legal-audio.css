@@ -1,0 +1,94 @@
+.v-legal-audio .reproductor {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 12px 0 16px;
+  padding: 14px 18px;
+}
+
+.v-legal-audio .reproductor__play {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 34px;
+  height: 34px;
+  font-size: clamp(0.875rem, 1.10rem, 2.4rem);
+  color: var(--blanco);
+  text-decoration: none;
+  background: var(--oscuro-fijo);
+  border-radius: 50%;
+}
+
+.v-legal-audio .reproductor svg {
+  flex: 1;
+  height: 30px;
+}
+
+.v-legal-audio .reproductor__tiempo {
+  font-size: clamp(0.875rem, 0.80rem, 2.4rem);
+  white-space: nowrap;
+  color: var(--etiqueta);
+}
+
+.v-legal-audio .audio {
+  display: grid;
+  grid-template-columns: minmax(0, 3.3fr) minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.v-legal-audio .transcripcion {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.v-legal-audio .transcripcion li {
+  display: grid;
+  grid-template-columns: 40px 50px minmax(0, 1fr);
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  padding: 12px;
+  font-size: clamp(0.875rem, 0.80rem, 2.4rem);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  box-shadow: var(--sombra-campo);
+}
+
+.v-legal-audio .transcripcion li span {
+  color: var(--azul-grafico);
+}
+
+.v-legal-audio .transcripcion li p {
+  margin: 0;
+}
+
+.v-legal-audio .transcripcion li.activa {
+  background: var(--resalte);
+  border-color: var(--azul-grafico);
+}
+
+.v-legal-audio .datos-v {
+  margin: 0;
+  font-size: clamp(0.875rem, 0.90rem, 2.4rem);
+}
+
+.v-legal-audio .datos-v dt {
+  margin-top: 10px;
+  font-size: clamp(0.875rem, 0.75rem, 2.4rem);
+  color: var(--texto-suave);
+}
+
+.v-legal-audio .datos-v dd {
+  margin: 2px 0 0;
+  font-weight: bold;
+}
+
+@media (max-width: 900px) {
+.v-legal-audio .audio {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+}

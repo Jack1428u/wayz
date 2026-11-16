@@ -1,0 +1,77 @@
+.v-gerencia-encuesta .encuesta {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 16px;
+  margin-top: 12px;
+  align-items: start;
+}
+
+.v-gerencia-encuesta .encuesta .tarjeta {
+  margin-bottom: 14px;
+}
+
+.v-gerencia-encuesta .fila--envio {
+  display: flex;
+  align-items: flex-end;
+  gap: 18px;
+}
+
+.v-gerencia-encuesta .fila--envio .campo {
+  flex: 1;
+}
+
+.v-gerencia-encuesta .fila--envio .casilla {
+  margin-bottom: 10px;
+  font-size: clamp(0.875rem, 0.80rem, 2.4rem);
+}
+
+.v-gerencia-encuesta .estrellas {
+  margin: 0;
+  color: var(--ambar);
+  font-size: clamp(0.875rem, 1.10rem, 2.4rem);
+}
+
+.v-gerencia-encuesta .estrellas small {
+  color: var(--texto);
+  font-size: clamp(0.875rem, 0.80rem, 2.4rem);
+}
+
+.v-gerencia-encuesta .dona {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 6px auto;
+  background: conic-gradient(var(--azul-oscuro) 0 90%, var(--pista) 90% 100%);
+  border-radius: 50%;
+}
+
+.v-gerencia-encuesta .dona span {
+  position: absolute;
+  inset: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(0.875rem, 1.20rem, 2.4rem);
+  font-weight: bold;
+  background: var(--superficie);
+  border-radius: 50%;
+}
+
+.v-gerencia-encuesta .linea {
+  fill: none;
+  stroke: var(--azul-grafico);
+  stroke-width: 1.6;
+}
+
+.v-gerencia-encuesta .puntos circle {
+  fill: var(--blanco);
+  stroke: var(--azul-grafico);
+  stroke-width: 1.2;
+}
+
+@media (max-width: 900px) {
+.v-gerencia-encuesta .encuesta {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+}

@@ -1,0 +1,81 @@
+.v-expediente-informe .informe {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2.3fr) minmax(0, 1fr);
+  gap: 14px;
+  margin-top: 12px;
+  align-items: start;
+}
+
+.v-expediente-informe .estructura {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.v-expediente-informe .estructura li {
+  margin-bottom: 8px;
+  padding: 8px 10px;
+  font-size: clamp(0.875rem, 0.90rem, 2.4rem);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+}
+
+.v-expediente-informe .estructura li.activo {
+  color: var(--blanco);
+  background: var(--navy-header);
+  font-weight: bold;
+}
+
+.v-expediente-informe .barra-editor {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.v-expediente-informe .barra-editor > * {
+  width: 22px;
+  height: 20px;
+  font-size: clamp(0.875rem, 0.90rem, 2.4rem);
+  line-height: 20px;
+  text-align: center;
+  border: 1px solid var(--borde);
+  border-radius: 4px;
+}
+
+.v-expediente-informe .editor p {
+  margin: 0;
+  font-size: clamp(0.875rem, 0.85rem, 2.4rem);
+  line-height: 1.45;
+}
+
+.v-expediente-informe .datos {
+  display: grid;
+  grid-template-columns: 60px minmax(0, 1fr);
+  gap: 12px 8px;
+  margin: 0;
+  font-size: clamp(0.875rem, 0.85rem, 2.4rem);
+}
+
+.v-expediente-informe .datos dt {
+  color: var(--texto-suave);
+}
+
+.v-expediente-informe .datos dd {
+  margin: 0;
+  font-weight: bold;
+}
+
+@media (max-width: 900px) {
+.v-expediente-informe .informe {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+}
+
+/* Exportar a PDF: al imprimir solo queda el informe */
+@media print {
+  .cabecera, .lateral, .pestanas, .encabezado__botones, .migas, #avisos, #toasts, .barra-editor { display: none !important; }
+  .v-expediente-informe .informe { display: block; }
+  .v-expediente-informe .tarjeta { break-inside: avoid; box-shadow: none; border: 1px solid #999; margin-bottom: 1rem; }
+}

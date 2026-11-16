@@ -1,0 +1,69 @@
+/* Tokens de diseño: colores, sombras y medidas con nombre. Cambiar un valor aquí cambia toda la aplicación.
+   Contrastes revisados contra WCAG 2.2 AA (4,5:1 en texto, 3:1 en bordes de controles). */
+:root {
+  /* Texto */
+  --texto: #1a2433;          /* sobre blanco: 15:1 */
+  --texto-suave: #3f4b5e;    /* sobre blanco: 9:1 */
+  --etiqueta: #2b3647;
+  --titulo: #1d3557;
+  --enlace: #1d4ed8;
+
+  /* Acciones */
+  --azul-oscuro: #1d3557;    /* fondo de los botones principales */
+  --azul-hover: #274a78;
+  --on-primario: #ffffff;
+  --borde-boton: #1d3557;
+
+  /* Superficies */
+  --fondo-app: #f1f4f9;
+  --fondo-panel: #f8fafc;
+  --fondo-suave: #e8edf5;
+  --superficie: #ffffff;
+  --blanco: #ffffff;         /* blanco fijo: texto sobre fondos oscuros */
+  --resalte: #e3ecfd;
+
+  /* Bordes */
+  --borde: #c5cedc;          /* decorativo (tarjetas, tablas) */
+  --borde-campo: #6b7a90;    /* controles: 4,3:1 contra blanco */
+  --borde-error: #6b7a90;
+
+  /* Cabecera y menú */
+  --navy-header: #1b2f55;
+  --navy-lateral: #15294d;
+  --navy-activo: #2b4268;
+  --lateral-texto: #e3ebf8;
+
+  /* Estados (siempre acompañados de texto o icono, nunca solo color) */
+  --ambar: #f2b134;
+  --on-ambar: #1b2f55;
+  --ambar-suave: #fdf1d6;
+  --ambar-texto: #7a4a00;
+  --rojo: #c62828;
+  --rojo-suave: #fde6e6;
+  --verde: #1b6b43;
+  --verde-suave: #dcf3e4;
+
+  /* Gráficos */
+  --azul-grafico: #1d4ed8;
+  --pista: #d5dce8;
+  --pista-fuerte: #8393ad;
+  --barra-suave: #c6d4ec;
+  --eje: #6b7a90;
+  --grilla: #e6eaf1;
+  --oscuro-fijo: #1f2937;
+  --mapa-alto: #f3b1b1;
+  --mapa-medio: #f6dc9b;
+  --mapa-bajo: #bfe6cc;
+
+  /* Accesibilidad */
+  --foco: #7030a0;           /* anillo de foco visible (3 px) */
+  --fuerza-contraste: 60%;   /* lo ajusta el deslizador de preferencias */
+
+  /* Sombras */
+  --sombra-campo: 0 1px 3px rgba(15, 23, 41, 0.12);
+  --sombra-panel: 0 2px 6px rgba(15, 23, 41, 0.08), 0 10px 30px rgba(15, 23, 41, 0.16);
+
+  /* Medidas */
+  --ancho-lateral: 15rem;
+  --alto-toque: 2.75rem;     /* 44 px: tamaño mínimo cómodo para dedos */
+}

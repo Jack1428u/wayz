@@ -1,0 +1,6 @@
+.v-panel .selector { display: inline-flex; align-items: center; gap: 0.6rem; }
+.v-panel .lista-avisos { margin: 0 0 0.8rem; padding: 0; list-style: none; }
+.v-panel .aviso a { color: var(--texto); text-decoration: none; }
+.v-panel .aviso a:hover { text-decoration: underline; }
+.v-panel .kpi small { display: block; color: var(--texto-suave); }
+.v-panel .tabla tr.seleccionada { background: var(--resalte); box-shadow: inset 5px 0 0 var(--azul-grafico); }

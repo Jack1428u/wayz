@@ -1,0 +1,122 @@
+.v-expediente-documentos .docs {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.v-expediente-documentos .lista-adjuntos {
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+}
+
+/* Nombres largos y etiquetas de autenticidad: nada se corta; si no cabe, la etiqueta pasa a la línea de abajo. */
+.v-expediente-documentos .lista-adjuntos li > div { flex: 1 1 8rem; min-width: 0; overflow-wrap: anywhere; }
+.v-expediente-documentos .lista-adjuntos li > .etiqueta { margin-left: auto; }
+.v-expediente-documentos .lista-adjuntos li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  padding: 8px 10px;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  box-shadow: var(--sombra-campo);
+}
+
+.v-expediente-documentos .lista-adjuntos b, .v-expediente-documentos .lista-adjuntos small {
+  display: block;
+}
+
+.v-expediente-documentos .lista-adjuntos b {
+  font-size: clamp(0.875rem, 0.90rem, 2.4rem);
+}
+
+.v-expediente-documentos .lista-adjuntos small {
+  margin-top: 2px;
+  font-size: clamp(0.875rem, 0.80rem, 2.4rem);
+  color: var(--texto-suave);
+}
+
+.v-expediente-documentos .icono {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 26px;
+  height: 26px;
+  font-size: clamp(0.875rem, 0.65rem, 2.4rem);
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.v-expediente-documentos .icono--pdf {
+  color: var(--rojo);
+  background: var(--rojo-suave);
+}
+
+.v-expediente-documentos .icono--zip {
+  color: var(--ambar-texto);
+  background: var(--ambar-suave);
+}
+
+.v-expediente-documentos .icono--mp4 {
+  color: var(--azul-grafico);
+  background: var(--resalte);
+}
+
+/* La huella SHA-256 (64 caracteres seguidos) y los enlaces largos se parten en pantallas estrechas. */
+.v-expediente-documentos .visor { min-width: 0; overflow-wrap: anywhere; }
+
+.v-expediente-documentos .boton--ancho {
+  width: 100%;
+}
+
+.v-expediente-documentos .visor__buscar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 6px 10px;
+  font-size: clamp(0.875rem, 0.90rem, 2.4rem);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+}
+
+.v-expediente-documentos .visor__buscar input {
+  border: none;
+  font: inherit;
+  font-size: clamp(0.875rem, 0.90rem, 2.4rem);
+  width: 60%;
+}
+
+.v-expediente-documentos .visor__hoja {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  margin-bottom: 10px;
+  font-size: clamp(0.875rem, 1.00rem, 2.4rem);
+  color: var(--texto-suave);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(15, 23, 41, 0.07);
+}
+
+.v-expediente-documentos .visor small {
+  display: block;
+  margin-top: 5px;
+  font-size: clamp(0.875rem, 0.80rem, 2.4rem);
+  color: var(--texto-suave);
+}
+
+@media (max-width: 900px) {
+.v-expediente-documentos .docs {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+}

@@ -1,0 +1,51 @@
+.v-gerencia-equipo .equipo {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 24px;
+  margin-top: 12px;
+  align-items: start;
+}
+
+.v-gerencia-equipo .subtitulo-seccion {
+  margin: 0 0 14px;
+  font-size: clamp(0.875rem, 0.90rem, 2.4rem);
+  color: var(--titulo);
+}
+
+.v-gerencia-equipo .analista {
+  display: grid;
+  grid-template-columns: 90px minmax(0, 1fr) 50px;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 26px;
+  font-size: clamp(0.875rem, 0.80rem, 2.4rem);
+}
+
+.v-gerencia-equipo .analista b {
+  text-align: right;
+  font-size: clamp(0.875rem, 0.75rem, 2.4rem);
+}
+
+.v-gerencia-equipo .desde {
+  margin: 0 0 12px;
+  font-size: clamp(0.875rem, 0.80rem, 2.4rem);
+  font-weight: bold;
+}
+
+.v-gerencia-equipo .tarjeta .casilla {
+  margin-bottom: 18px;
+  font-size: clamp(0.875rem, 0.80rem, 2.4rem);
+}
+
+.v-gerencia-equipo .boton--ancho {
+  width: 100%;
+  min-height: 44px;
+  margin-top: 6px;
+}
+
+@media (max-width: 900px) {
+.v-gerencia-equipo .equipo {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+}

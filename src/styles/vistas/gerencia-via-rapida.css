@@ -1,0 +1,95 @@
+.v-gerencia-via-rapida .via {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 16px;
+  margin-top: 12px;
+  align-items: start;
+}
+
+.v-gerencia-via-rapida .via .tarjeta {
+  margin-bottom: 14px;
+}
+
+.v-gerencia-via-rapida .fila {
+  display: flex;
+  gap: 12px;
+}
+
+.v-gerencia-via-rapida .tarjeta .casilla {
+  margin-bottom: 14px;
+  font-size: clamp(0.875rem, 0.80rem, 2.4rem);
+}
+
+.v-gerencia-via-rapida .interruptor--fila {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 16px;
+  font-size: clamp(0.875rem, 0.80rem, 2.4rem);
+  font-weight: normal;
+}
+
+.v-gerencia-via-rapida .total {
+  margin-bottom: 12px;
+  padding: 12px 14px;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  box-shadow: var(--sombra-campo);
+}
+
+.v-gerencia-via-rapida .total small {
+  display: block;
+  font-size: clamp(0.875rem, 0.70rem, 2.4rem);
+  color: var(--texto-suave);
+}
+
+.v-gerencia-via-rapida .total strong {
+  font-size: clamp(0.875rem, 1.60rem, 2.4rem);
+}
+
+.v-gerencia-via-rapida .lista-asegurados {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.v-gerencia-via-rapida .lista-asegurados li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  padding: 10px;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  box-shadow: var(--sombra-campo);
+}
+
+.v-gerencia-via-rapida .lista-asegurados b, .v-gerencia-via-rapida .lista-asegurados small {
+  display: block;
+  font-size: clamp(0.875rem, 0.80rem, 2.4rem);
+}
+
+.v-gerencia-via-rapida .lista-asegurados small {
+  margin-top: 2px;
+  font-size: clamp(0.875rem, 0.70rem, 2.4rem);
+  color: var(--texto-suave);
+}
+
+.v-gerencia-via-rapida .icono-doc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: var(--fondo-suave);
+  border-radius: 5px;
+}
+
+@media (max-width: 900px) {
+.v-gerencia-via-rapida .via {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+}

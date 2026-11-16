@@ -1,0 +1,17 @@
+/* Botones. Uso:  <button class="boton boton--primario">Texto</button>  /  <a class="boton" href="#/ruta">Texto</a> */
+.boton {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
+  min-height: var(--alto-toque); padding: 0.3rem 1.1rem;
+  font: inherit; font-size: 1rem; font-weight: 700; text-decoration: none; text-align: center;
+  color: var(--titulo); background: var(--superficie);
+  border: 2px solid var(--borde-boton); border-radius: 0.5rem; cursor: pointer;
+}
+.boton:hover { background: var(--resalte); }
+.boton[aria-pressed='true'] { color: var(--on-primario); background: var(--azul-oscuro); }
+
+.boton--primario { color: var(--on-primario); background: var(--azul-oscuro); }
+.boton--primario:hover { background: var(--azul-hover); }
+.boton--peligro { color: #fff; background: var(--rojo); border-color: var(--rojo); }
+.boton--ancho { width: 100%; }
+.boton[disabled], .boton[aria-disabled='true'] { opacity: 0.55; cursor: not-allowed; }
+:root[data-tema='contraste'] .boton--peligro { color: #000; background: var(--rojo); }

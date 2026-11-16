@@ -1,0 +1,6 @@
+.v-bandeja .conteo { margin: 0 0 0.6rem; font-weight: 700; color: var(--texto-suave); }
+.v-bandeja .vacio { padding: 2rem 1rem; text-align: center; }
+.v-bandeja .tabla tr.seleccionada { background: var(--resalte); box-shadow: inset 5px 0 0 var(--azul-grafico); }
+.v-bandeja .filtros input[type='search'] { flex: 1 1 14rem; max-width: 24rem; }
+.v-bandeja .filtros { flex-wrap: wrap; align-items: center; }
+.v-bandeja .vista-previa__agente { margin: 0.8rem 0 0; padding: 0.6rem 0.8rem; font-size: 0.95rem; background: var(--fondo-suave); border-left: 6px solid var(--azul-grafico); border-radius: 0.4rem; }

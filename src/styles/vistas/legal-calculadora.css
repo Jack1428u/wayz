@@ -1,0 +1,61 @@
+.v-legal-calculadora .calculadora {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+  gap: 16px;
+  margin-top: 14px;
+  align-items: start;
+}
+
+.v-legal-calculadora .deslizador {
+  display: block;
+  margin-bottom: 22px;
+}
+
+.v-legal-calculadora .deslizador span {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-size: clamp(0.875rem, 0.80rem, 2.4rem);
+  font-weight: bold;
+}
+
+.v-legal-calculadora .deslizador b {
+  font-weight: normal;
+}
+
+.v-legal-calculadora .dona {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  margin: 6px auto;
+  background: conic-gradient(var(--azul-oscuro) 0 42%, var(--pista) 42% 100%);
+  border-radius: 50%;
+}
+
+.v-legal-calculadora .dona span {
+  position: absolute;
+  inset: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(0.875rem, 1.10rem, 2.4rem);
+  font-weight: bold;
+  background: var(--superficie);
+  border-radius: 50%;
+}
+
+.v-legal-calculadora .factores {
+  margin-top: 14px;
+}
+
+.v-legal-calculadora .factores p {
+  margin: 6px 0 4px;
+  font-size: clamp(0.875rem, 0.80rem, 2.4rem);
+}
+
+@media (max-width: 900px) {
+.v-legal-calculadora .calculadora {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+}

@@ -1,0 +1,41 @@
+.v-config-usuarios .accesos {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+  gap: 16px;
+  margin-top: 12px;
+  align-items: start;
+}
+
+.v-config-usuarios .subtitulo-seccion {
+  margin: 16px 0 6px;
+  font-size: clamp(0.875rem, 0.90rem, 2.4rem);
+  color: var(--titulo);
+}
+
+.v-config-usuarios .matriz td:not(:first-child), .v-config-usuarios .matriz th:not(:first-child) {
+  text-align: center;
+}
+
+.v-config-usuarios .usuario-sel {
+  margin: 0 0 10px;
+  font-size: clamp(0.875rem, 0.90rem, 2.4rem);
+  font-weight: bold;
+}
+
+.v-config-usuarios .accesos .casilla {
+  margin-bottom: 14px;
+  font-size: clamp(0.875rem, 0.85rem, 2.4rem);
+}
+
+.v-config-usuarios .boton--ancho {
+  width: 100%;
+  min-height: 44px;
+  margin-top: 10px;
+}
+
+@media (max-width: 900px) {
+.v-config-usuarios .accesos {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+}

@@ -1,0 +1,50 @@
+.v-gerencia-roi .graficos {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 16px;
+}
+
+.v-gerencia-roi .linea {
+  fill: none;
+  stroke: var(--azul-grafico);
+  stroke-width: 1.6;
+}
+
+.v-gerencia-roi .puntos circle {
+  fill: var(--blanco);
+  stroke: var(--azul-grafico);
+  stroke-width: 1.2;
+}
+
+.v-gerencia-roi .nota {
+  margin: 4px 0 0;
+  font-size: clamp(0.875rem, 0.75rem, 2.4rem);
+  color: var(--texto-suave);
+}
+
+.v-gerencia-roi .barras {
+  display: flex;
+  align-items: flex-end;
+  gap: 22px;
+  height: 130px;
+  padding: 0 16px;
+  border-left: 1px solid var(--eje);
+  border-bottom: 1px solid var(--eje);
+}
+
+.v-gerencia-roi .barra {
+  flex: 1;
+  background: var(--barra-suave);
+  border-radius: 3px 3px 0 0;
+}
+
+.v-gerencia-roi .barra--pico {
+  background: var(--azul-grafico);
+}
+
+@media (max-width: 900px) {
+.v-gerencia-roi .graficos {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+}

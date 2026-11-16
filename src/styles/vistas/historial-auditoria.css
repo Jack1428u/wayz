@@ -1,0 +1,46 @@
+.v-historial-auditoria .detalle {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr);
+  gap: 16px;
+  margin-top: 14px;
+  align-items: start;
+}
+
+.v-historial-auditoria .subtitulo-seccion {
+  margin: 0 0 8px;
+  font-size: clamp(0.875rem, 1.10rem, 2.4rem);
+  color: var(--titulo);
+}
+
+.v-historial-auditoria .datos-v {
+  margin: 0;
+  font-size: clamp(0.875rem, 0.90rem, 2.4rem);
+}
+
+.v-historial-auditoria .datos-v dt {
+  margin-top: 10px;
+  font-size: clamp(0.875rem, 0.75rem, 2.4rem);
+  color: var(--texto-suave);
+}
+
+.v-historial-auditoria .datos-v dd {
+  margin: 2px 0 0;
+  font-weight: bold;
+}
+
+.v-historial-auditoria .aviso-punteado {
+  margin: 12px 0 0;
+  padding: 12px;
+  font-size: clamp(0.875rem, 0.85rem, 2.4rem);
+  text-align: center;
+  background: var(--fondo-suave);
+  border: 1.5px dashed var(--borde-error);
+  border-radius: 8px;
+}
+
+@media (max-width: 900px) {
+.v-historial-auditoria .detalle {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+}

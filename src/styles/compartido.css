@@ -1,0 +1,180 @@
+/* Reglas que se repetían en 3 o más vistas (generado al convertir los wireframes) */
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin: 12px 0 18px;
+}
+
+.kpi span {
+  display: block;
+  font-size: clamp(0.875rem, 0.95rem, 2.4rem);
+  color: var(--texto-suave);
+}
+
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.kpi {
+  position: relative;
+  padding: 9px 12px;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(15, 23, 41, 0.06);
+}
+
+.kpi::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  background: var(--azul-grafico);
+  border-radius: 2px;
+}
+
+.kpi--ambar {
+  background: var(--ambar-suave);
+  border-color: var(--ambar);
+}
+
+.kpi--ambar::before {
+  background: var(--ambar);
+}
+
+.kpi strong {
+  font-size: clamp(0.875rem, 2.00rem, 2.4rem);
+  color: var(--titulo);
+}
+
+.kpi--ambar strong {
+  color: var(--ambar-texto);
+}
+
+.kpi svg {
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+  width: 64px;
+  height: 26px;
+}
+
+.kpi polyline {
+  fill: none;
+  stroke: var(--azul-grafico);
+  stroke-width: 1.5;
+}
+
+.kpi--ambar polyline {
+  stroke: var(--ambar);
+}
+
+.grafico {
+  width: 100%;
+  height: auto;
+}
+
+.eje {
+  stroke: var(--eje);
+}
+
+.filtros {
+  display: flex;
+  gap: 10px;
+  margin: 12px 0 14px;
+}
+
+.fila .campo {
+  flex: 1;
+}
+
+.encabezado__botones {
+  display: flex;
+  gap: 10px;
+}
+
+.chips {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0 12px;
+}
+
+.chips small {
+  margin-left: auto;
+  font-size: clamp(0.875rem, 0.90rem, 2.4rem);
+  color: var(--texto-suave);
+}
+
+.subpestanas {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.subpestanas nav {
+  display: flex;
+  flex: 1;
+  gap: 6px;
+}
+
+.subpestanas nav a {
+  flex: 1;
+  padding: 7px 0;
+  font-size: clamp(0.875rem, 0.95rem, 2.4rem);
+  text-align: center;
+  color: var(--etiqueta);
+  text-decoration: none;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 5px;
+}
+
+.subpestanas nav a.activo {
+  font-weight: bold;
+  color: var(--blanco);
+  background: var(--navy-header);
+}
+
+.boton--ia {
+  height: auto;
+  padding: 0 22px;
+  font-size: clamp(0.875rem, 0.95rem, 2.4rem);
+}
+
+.tabla tr.seleccionada {
+  background: var(--resalte);
+  box-shadow: inset 4px 0 0 var(--azul-grafico);
+}
+
+.deslizador input {
+  width: 100%;
+  accent-color: var(--titulo);
+}
+
+
+/* ---------- Pantallas estrechas (responsive): nada debe obligar a desplazarse hacia los lados ---------- */
+@media (max-width: 56rem) {
+  .filtros { flex-wrap: wrap; }
+  .filtros > * { min-width: 0; max-width: 100%; }
+  .filtros input, .filtros select { max-width: 100%; }
+  .encabezado { flex-wrap: wrap; gap: 0.6rem; }
+  .encabezado__botones { flex-wrap: wrap; }
+  .chips { flex-wrap: wrap; }
+  .chips small { margin-left: 0; }
+  .subpestanas { flex-direction: column; align-items: stretch; }
+  .subpestanas nav { flex-wrap: wrap; }
+  .subpestanas nav a {
+    display: flex; flex: 1 1 auto; align-items: center; justify-content: center; min-height: var(--alto-toque); padding: 0 0.8rem;
+  }
+  .boton--ia { min-height: var(--alto-toque); }
+  /* Las tarjetas de indicadores pasan de 4 columnas a las que quepan, para que los números no se salgan. */
+  .kpis { grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr)); }
+  .kpi { overflow-wrap: anywhere; }
+}

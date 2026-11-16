@@ -1,0 +1,145 @@
+/* ============ Inicio de sesión (wireframe W-01) ============
+   Izquierda: tarjeta clara con el logo. Derecha: formulario. Las medidas siguen el wireframe de Figma. */
+
+.v-login .login {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5rem;
+  min-height: 100vh;
+  padding: 3rem;
+  align-items: stretch;
+  background: var(--superficie);   /* blanco, como en el wireframe */
+}
+
+/* ---------- Tarjeta del logo ---------- */
+/* Siempre clara (como en el wireframe): las letras grises del logo se leen en cualquier tema. */
+.v-login .login__bienvenida {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;                       /* ocupa todo el ancho de su zona */
+  min-height: 30rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  box-shadow: 0 2px 6px rgba(15, 23, 41, 0.08), 0 10px 30px rgba(15, 23, 41, 0.16);
+}
+.v-login .login__bienvenida img { width: min(70%, 30rem); height: auto; }
+
+/* ---------- Formulario ---------- */
+.v-login .login__formulario {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 36rem;
+  margin-inline: auto;
+}
+
+.v-login .marca {
+  align-self: flex-start;
+  margin: 0;
+  padding: 0.55rem 2.6rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--on-primario);
+  background: var(--azul-oscuro);
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(15, 23, 41, 0.22);
+}
+.v-login h1 { margin: 2.2rem 0 0.2rem; font-size: 2rem; color: var(--titulo); }
+.v-login .subtitulo { margin: 0 0 1.6rem; color: var(--texto-suave); }
+
+.v-login label { display: block; margin: 0 0 0.4rem; font-weight: 700; color: var(--etiqueta); }
+.v-login input[type='email'],
+.v-login input[type='password'],
+.v-login input[type='text'] {
+  width: 100%;
+  min-height: 3rem;
+  margin-bottom: 1.3rem;
+  padding: 0 0.9rem;
+  font: inherit;
+  color: var(--texto);
+  background: var(--superficie);
+  border: 1px solid var(--borde-campo);
+  border-radius: 10px;
+  box-shadow: var(--sombra-campo);
+}
+.v-login #clave { margin-bottom: 0.2rem; }
+
+.v-login .enlace-boton {
+  width: auto;
+  min-height: var(--alto-toque);
+  padding: 0 0.3rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--enlace);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+}
+.v-login .enlace-boton:hover { text-decoration-thickness: 3px; }
+
+.v-login .opciones { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.3rem 1rem; margin: 0.2rem 0 1.2rem; }
+.v-login .recordar { display: inline-flex; align-items: center; gap: 0.5rem; margin: 0; font-weight: 400; color: var(--texto); }
+
+/* Botón principal (esquinas superiores más redondeadas, como en Figma) */
+.v-login .boton-login {
+  width: 100%;
+  min-height: 3.1rem;
+  font: inherit;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--on-primario);
+  background: var(--azul-oscuro);
+  border: 2px solid var(--azul-oscuro);
+  border-radius: 14px 14px 6px 6px;
+  cursor: pointer;
+}
+.v-login .boton-login:hover { background: var(--azul-hover); }
+
+/* Mensaje de error: recuadro punteado, igual que el wireframe; solo aparece si falla el ingreso */
+.v-login .error-login {
+  margin: 1rem 0 0;
+  padding: 0.9rem 1rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--texto);
+  background: var(--fondo-panel);
+  border: 1px dashed var(--borde-error);
+  border-left: 6px solid var(--rojo);
+  border-radius: 10px;
+}
+
+/* Cuentas de demostración (no están en el wireframe: sirven para probar cada rol) */
+.v-login .demo { margin-top: 1.4rem; padding: 0.3rem 1rem 0.8rem; border: 1px solid var(--borde); border-radius: 10px; }
+.v-login .demo summary { display: flex; align-items: center; min-height: var(--alto-toque); font-weight: 700; cursor: pointer; }
+.v-login .demo__ayuda { margin: 0 0 0.7rem; font-size: 0.95rem; color: var(--texto-suave); }
+.v-login .demo__botones { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 0.5rem; }
+.v-login .demo__boton {
+  min-height: var(--alto-toque);
+  padding: 0 0.5rem;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--texto);
+  background: var(--superficie);
+  border: 1px solid var(--borde-campo);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.v-login .demo__boton:hover { background: var(--resalte); }
+
+/* Pie: al fondo de la columna, como en el wireframe */
+.v-login footer { margin-top: auto; padding-top: 1.6rem; text-align: center; font-size: 0.95rem; color: var(--texto-suave); }
+
+/* ---------- Pantallas estrechas ---------- */
+@media (max-width: 56rem) {
+  .v-login .login { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; padding: 1.2rem; }
+  .v-login .login__bienvenida { min-height: 12rem; }
+  .v-login .login__bienvenida img { width: min(62%, 16rem); }
+  .v-login .marca { display: none; }
+  .v-login h1 { margin-top: 0.4rem; }
+}

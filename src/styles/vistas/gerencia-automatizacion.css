@@ -1,0 +1,51 @@
+.v-gerencia-automatizacion .interruptor--fila {
+  margin: 14px 0;
+  font-size: clamp(0.875rem, 0.85rem, 2.4rem);
+}
+
+.v-gerencia-automatizacion .reglas-sim {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.v-gerencia-automatizacion .campo--medio {
+  width: 60%;
+}
+
+.v-gerencia-automatizacion .rotulo {
+  margin: 8px 0;
+  font-size: clamp(0.875rem, 0.75rem, 2.4rem);
+  font-weight: bold;
+  color: var(--etiqueta);
+}
+
+.v-gerencia-automatizacion .fila-casillas {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 8px;
+}
+
+.v-gerencia-automatizacion .tarjeta .casilla {
+  font-size: clamp(0.875rem, 0.80rem, 2.4rem);
+  margin-bottom: 14px;
+}
+
+.v-gerencia-automatizacion .subtitulo-seccion {
+  margin: 0 0 8px;
+  font-size: clamp(0.875rem, 0.90rem, 2.4rem);
+  color: var(--titulo);
+}
+
+.v-gerencia-automatizacion .reglas-sim .kpi {
+  margin-bottom: 12px;
+  padding: 14px 16px;
+}
+
+@media (max-width: 900px) {
+.v-gerencia-automatizacion .reglas-sim {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+}

@@ -1,0 +1,75 @@
+.v-legal-expediente .legal {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+  gap: 16px;
+  margin-top: 12px;
+  align-items: start;
+}
+
+.v-legal-expediente .subtitulo-seccion {
+  margin: 0 0 8px;
+  font-size: clamp(0.875rem, 1.00rem, 2.4rem);
+  color: var(--titulo);
+}
+
+.v-legal-expediente .plazo {
+  text-align: center;
+}
+
+.v-legal-expediente .plazo h2 {
+  text-align: left;
+}
+
+.v-legal-expediente .dona {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 8px auto;
+  background: conic-gradient(var(--azul-oscuro) 0 60%, var(--pista-fuerte) 60% 100%);
+  border-radius: 50%;
+}
+
+.v-legal-expediente .dona span {
+  position: absolute;
+  inset: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(0.875rem, 1.20rem, 2.4rem);
+  font-weight: bold;
+  background: var(--superficie);
+  border-radius: 50%;
+}
+
+.v-legal-expediente .plazo__botones {
+  display: flex;
+  gap: 6px;
+}
+
+.v-legal-expediente .plazo__botones .boton {
+  flex: 1;
+  padding: 0;
+  font-size: clamp(0.875rem, 0.80rem, 2.4rem);
+}
+
+.v-legal-expediente .versiones {
+  margin-top: 14px;
+}
+
+.v-legal-expediente .boton--derecha {
+  float: right;
+  margin-top: 10px;
+}
+
+.v-legal-expediente .versiones::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+@media (max-width: 900px) {
+.v-legal-expediente .legal {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+}

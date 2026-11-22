@@ -19,6 +19,7 @@ concurrency:
 jobs:
   construir:
     runs-on: ubuntu-latest
+    environment: wayz
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

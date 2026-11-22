@@ -97,7 +97,7 @@ Regla de oro: **vista = HTML, comportamiento = JS, estilos = CSS**, cada uno en 
 El **Agente Wayz** revisa los reclamos nuevos sin que nadie se lo pida y deja a cada uno priorizado y explicado para el analista. Es un agente porque tiene un objetivo, **decide solo** qué herramientas usar y en qué orden, y **actúa** (registra su evaluación). Un humano toma siempre la decisión final: el agente nunca aprueba ni rechaza.
 
 ```
-Reclamo nuevo → el agente (Gemini) decide:
+Reclamo nuevo → el Agente (Gemini) decide:
    calcular_riesgo → (si el puntaje es alto) buscar_casos_similares · revisar_documentos · consultar_listas
    → registrar_evaluacion (prioridad + resumen + motivos + siguiente paso)
 ```

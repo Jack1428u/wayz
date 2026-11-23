@@ -31,6 +31,11 @@ export function tarjetaAgente(id) {
       <p class="agente__accion"><strong>Siguiente paso sugerido:</strong> ${esc(e.accion)}</p>
       <p class="agente__pie">Sugerencia automática, no es una decisión. Herramientas usadas: ${e.herramientas.join(', ')}.
         Cerebro: ${MODO[e.modo] ?? e.modo}${e.modelo ? ` (${esc(e.modelo)})` : ''}. Evaluado el ${fechaLegible(e.fecha)}.</p>
+      <div class="agente__acciones">
+        <button type="button" class="boton boton--secundario boton--pequeno" data-enviar-analisis="${esc(id)}">
+          ✉ Enviar análisis a mi correo
+        </button>
+      </div>
     </section>`;
 }
 

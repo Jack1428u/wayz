@@ -9,6 +9,8 @@ import { abrirDialogo } from './dialogo.js';
 import { toast, anunciar } from './avisos.js';
 import { validarFormulario } from './formularios.js';
 import { obtenerSesion } from './almacen.js';
+import { evaluacionDe } from '../datos/agente.js';
+import { supabase, hayBaseDeDatos } from '../datos/supabase.js';
 
 export function iniciarInteracciones() {
   document.addEventListener('click', (e) => {
@@ -27,6 +29,51 @@ export function iniciarInteracciones() {
 
     const segmento = e.target.closest('[data-segmento]');
     if (segmento) { alternarSegmento(segmento); return; }
+
+    const botonNotificar = e.target.closest('[data-enviar-analisis]');
+    if (botonNotificar) {
+      e.preventDefault();
+      const casoId = botonNotificar.dataset.enviarAnalisis;
+      const evaluacion = evaluacionDe(casoId);
+      if (!evaluacion) {
+        toast('No hay una evaluación disponible para este caso.', 'alerta');
+        return;
+      }
+
+      if (!hayBaseDeDatos || !supabase) {
+        toast('Modo local (sin base de datos). Conecta Supabase para enviar correos desde la nube.', 'alerta');
+        return;
+      }
+
+      const sesion = obtenerSesion();
+      const emailDestino = sesion?.correo || null;
+
+      botonNotificar.disabled = true;
+      const textoOriginal = botonNotificar.textContent;
+      botonNotificar.textContent = 'Enviando alerta...';
+
+      supabase.functions.invoke('notificar-analisis', {
+        body: { evaluacion, emailDestino },
+      })
+        .then(({ data, error }) => {
+          if (error) {
+            console.error('Error al invocar Edge Function notificar-analisis:', error);
+            toast(`No se pudo enviar el correo: ${error.message || 'error del servicio'}`, 'error');
+          } else {
+            toast(`Correo enviado con éxito a ${data?.destinatario || emailDestino || 'tu bandeja'}`, 'ok');
+            anunciar('Alerta enviada correctamente por correo electrónico');
+          }
+        })
+        .catch((err) => {
+          console.error('Error de red al invocar Edge Function:', err);
+          toast('Fallo de conexión al enviar el correo.', 'error');
+        })
+        .finally(() => {
+          botonNotificar.disabled = false;
+          botonNotificar.textContent = textoOriginal;
+        });
+      return;
+    }
 
     const accion = e.target.closest('[data-accion]');
     if (accion) {

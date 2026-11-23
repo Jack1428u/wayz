@@ -8,6 +8,9 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { evaluarCaso } from './agente.js';
 import { todosLosCasos, registrarCasosExtra } from './herramientas.js';
+import { enviarAlertaAnalisis } from './notificador-email.js';
+
+const dormir = (ms) => new Promise((r) => setTimeout(r, ms));
 
 const AQUI = dirname(fileURLToPath(import.meta.url));
 const SALIDA = join(AQUI, '..', 'src', 'datos', 'resultados-agente.json');
@@ -57,9 +60,19 @@ async function main() {
     console.log(`  → ${e.prioridad} (${e.puntaje}/100) [${e.modo}]`);
     console.log(`    ${e.resumen}`);
     console.log(`    Siguiente paso: ${e.accion}`);
+    try {
+      const envio = await enviarAlertaAnalisis(e);
+      if (envio.ok) console.log(`    ✉ Alerta enviada (id: ${envio.id})`);
+    } catch (err) {
+      console.error(`    ! Fallo inesperado al notificar ${id}:`, err?.message ?? err);
+    }
   };
 
-  for (const c of todosLosCasos()) await procesar(c.id);
+  const casos = todosLosCasos();
+  for (let i = 0; i < casos.length; i++) {
+    await procesar(casos[i].id);
+    if (i < casos.length - 1) await dormir(500); // respeta el Rate Limit de Resend (10 req/s)
+  }
 
   if (!vigilar) { console.log(`\nListo. Resultados en src/datos/resultados-agente.json`); return; }
 
@@ -75,7 +88,13 @@ async function main() {
     if (!nuevos.length) return;
     ocupado = true;
     registrarCasosExtra(entrantes.map((x) => x.caso), Object.fromEntries(entrantes.map((x) => [x.caso.id, x.expediente])));
-    for (const n of nuevos) { console.log(`\n📥 Llegó un reclamo nuevo: ${n.caso.id}`); await procesar(n.caso.id); visto.add(n.caso.id); }
+    for (let i = 0; i < nuevos.length; i++) {
+      const n = nuevos[i];
+      console.log(`\n📥 Llegó un reclamo nuevo: ${n.caso.id}`);
+      await procesar(n.caso.id);
+      visto.add(n.caso.id);
+      if (i < nuevos.length - 1) await dormir(500);
+    }
     ocupado = false;
   }, 3000);
 }

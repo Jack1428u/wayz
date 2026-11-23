@@ -118,7 +118,7 @@ npm run agente:vigilar    # queda trabajando solo: evalúa cada reclamo nuevo qu
 npm run agente:prueba     # 6 pruebas automáticas con un Gemini simulado
 ```
 
-**Con Gemini (gratis):** crea tu clave en [Google AI Studio](https://aistudio.google.com), copia `.env.example` como `.env` y pega la clave en `GEMINI_API_KEY=`. El archivo `.env` está en `.gitignore`: **nunca se sube a GitHub**. Sin clave, o si Gemini falla o se agota la cuota, el agente sigue funcionando con reglas (las mismas herramientas, sin IA) y lo indica en pantalla.
+**Con Gemini:** crea tu clave en [Google AI Studio](https://aistudio.google.com), copia `.env.example` como `.env` y pega la clave en `GEMINI_API_KEY=`. El archivo `.env` está en `.gitignore`: **nunca se sube a GitHub**. Sin clave, o si Gemini falla o se agota la cuota, el agente sigue funcionando con reglas (las mismas herramientas, sin IA) y lo indica en pantalla.
 
 **Dónde se ve en la aplicación:** columna «Sugerido por el agente» y resumen en el panel del analista, vista previa de la bandeja y tarjeta «Evaluación del agente» en el expediente. Cada evaluación dice qué herramientas usó y si el cerebro fue Gemini o las reglas.
 

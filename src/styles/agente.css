@@ -10,6 +10,7 @@
 .agente__motivos { margin: 0; padding-left: 1.2rem; }
 .agente__accion { margin: 0.8rem 0 0; padding: 0.6rem 0.8rem; background: var(--fondo-suave); border-radius: 0.4rem; }
 .agente__pie { margin: 0.8rem 0 0; font-size: 0.9rem; color: var(--texto-suave); }
+.agente__acciones { margin-top: 0.8rem; display: flex; gap: 0.5rem; }
 
 /* Resumen en el panel del analista. */
 .resumen-agente { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 1rem; margin: 0 0 1rem; padding: 0.8rem 1rem; background: var(--superficie); border: 1px solid var(--borde); border-left: 8px solid var(--azul-grafico); border-radius: 0.6rem; }

@@ -3,6 +3,6 @@ dist/
 .env
 .env.*
 !.env.example
-.github
-.github/
+# .github
+# .github/
 referencia/

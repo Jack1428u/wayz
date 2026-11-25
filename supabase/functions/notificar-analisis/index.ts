@@ -1,9 +1,9 @@
 // Supabase Edge Function: notificar-analisis
-// Recibe la evaluación del Agente y el correo destino, y utiliza Resend para despachar el correo.
-// Se ejecuta en Deno runtime en el entorno serverless de Supabase.
+// Despacha correos de análisis de riesgo generados por el Agente Wayz usando Resend.
+// Carga variables desde .env (con dotenv en local) y desde Supabase Secrets (Deno.env en producción).
 
-import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
-import { Resend } from 'npm:resend@6.39.0';
+import { load } from 'https://deno.land/std@0.224.0/dotenv/mod.ts';
+import { Resend } from 'https://esm.sh/resend@3.2.0';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -17,6 +17,18 @@ const COLOR_PRIORIDAD: Record<string, string> = {
   Baja: '#16a34a',
 };
 
+// Carga opcional de .env local mediante dotenv (en la nube de Supabase no existe .env y se usan los Secrets)
+let envLocal: Record<string, string> = {};
+try {
+  envLocal = await load({ envPath: '.env' });
+} catch {
+  envLocal = {};
+}
+
+function obtenerVariable(nombre: string): string | undefined {
+  return envLocal[nombre] || Deno.env.get(nombre) || undefined;
+}
+
 function escaparHtml(texto: unknown): string {
   return String(texto ?? '')
     .replace(/&/g, '&amp;')
@@ -26,8 +38,18 @@ function escaparHtml(texto: unknown): string {
     .replace(/'/g, '&#39;');
 }
 
-function construirHtmlAnalisis(evaluacion: any): string {
-  const { id, puntaje, prioridad, resumen, motivos = [], accion, modo, modelo, fecha } = evaluacion;
+function construirHtmlAnalisis(evaluacion: {
+  id?: string;
+  puntaje?: number;
+  prioridad?: string;
+  resumen?: string;
+  motivos?: string[];
+  accion?: string;
+  modo?: string;
+  modelo?: string | null;
+  fecha?: string;
+}): string {
+  const { id = '—', puntaje = 0, prioridad = 'Media', resumen = '', motivos = [], accion = '', modo = '', modelo = null, fecha = '' } = evaluacion;
   const color = COLOR_PRIORIDAD[prioridad] ?? '#4b5563';
   const listaMotivos = Array.isArray(motivos) && motivos.length
     ? `<ul style="margin: 8px 0 16px; padding-left: 20px; color: #374151;">
@@ -72,7 +94,7 @@ function construirHtmlAnalisis(evaluacion: any): string {
 </html>`;
 }
 
-serve(async (req) => {
+Deno.serve(async (req: Request) => {
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders });
   }
@@ -87,16 +109,27 @@ serve(async (req) => {
       });
     }
 
-    const apiKey = Deno.env.get('RESEND_API_KEY');
+    const apiKey = obtenerVariable('RESEND_API_KEY');
     if (!apiKey) {
-      return new Response(JSON.stringify({ error: 'RESEND_API_KEY no configurada en Supabase Secrets' }), {
+      return new Response(JSON.stringify({ error: 'RESEND_API_KEY no configurada en .env ni en Supabase Secrets' }), {
         status: 500,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
     }
 
-    const remitente = Deno.env.get('EMAIL_FROM') || 'Wayz Alertas <alertas@tudominio.com>';
-    const destinatario = emailDestino || Deno.env.get('EMAIL_ANALISTA_DEFAULT') || 'analista@wayz.demo';
+    const remitente = obtenerVariable('EMAIL_FROM') || 'Wayz Alertas <onboarding@resend.dev>';
+    const destinoValido = typeof emailDestino === 'string' && emailDestino && !emailDestino.endsWith('@wayz.demo')
+      ? emailDestino
+      : undefined;
+    const destinatario = destinoValido || obtenerVariable('EMAIL_ANALISTA_DEFAULT');
+
+    if (!destinatario) {
+      return new Response(JSON.stringify({ error: 'No se encontró un correo destino ni EMAIL_ANALISTA_DEFAULT configurado' }), {
+        status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
     const idempotencyKey = `wayz-analisis-${evaluacion.id}-${evaluacion.fecha ?? 'sin-fecha'}`;
 
     const resend = new Resend(apiKey);
@@ -111,7 +144,6 @@ serve(async (req) => {
     );
 
     if (error) {
-      console.error('Error desde Resend:', error);
       return new Response(JSON.stringify({ error: error.message ?? error }), {
         status: 502,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
@@ -121,9 +153,9 @@ serve(async (req) => {
     return new Response(JSON.stringify({ ok: true, id: data?.id ?? null, destinatario }), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
-  } catch (err: any) {
-    console.error('Excepción en Edge Function:', err);
-    return new Response(JSON.stringify({ error: err?.message ?? 'Error interno del servidor' }), {
+  } catch (err: unknown) {
+    const mensaje = err instanceof Error ? err.message : String(err);
+    return new Response(JSON.stringify({ error: mensaje }), {
       status: 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });

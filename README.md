@@ -1,8 +1,10 @@
 # Wayz
 
-Aplicación web para **detectar fraude en seguros** (aseguradoras medianas, agencias y MGAs). Es una sola aplicación responsive hecha con **HTML5, CSS3 y JavaScript** (módulos ES), sin frameworks. Parte de los wireframes de Figma (46 pantallas web) y los unifica en un producto navegable.
+Aplicación web para **detectar fraude en seguros** (aseguradoras medianas, agencias y MGAs). Es una sola aplicación responsive construida con **HTML5, CSS3 y JavaScript** (módulos ES), sin frameworks. Parte de los wireframes de Figma (46 pantallas web) y los unifica en un producto navegable de alto rendimiento.
 
-> **Alcance:** aplicación web conectada a una base de datos PostgreSQL (Supabase): inicio de sesión real, reclamos, decisiones, escalamientos, plazos y preferencias se guardan. Algunas acciones (firmar, exportar PDF…) siguen siendo simulaciones. Sin claves en `.env.local` funciona en modo demostración con datos locales.
+> **Alcance:** Aplicación web conectada a una base de datos PostgreSQL (Supabase): inicio de sesión real, reclamos, decisiones, escalamientos, plazos y preferencias se guardan. Incorpora un subsistema de Agente de IA para evaluación de reclamos y un servicio de notificaciones transaccionales vía **Resend** (tanto en Node.js como desde la interfaz mediante Supabase Edge Functions). Sin claves en `.env.local` funciona en modo demostración con datos locales.
+
+---
 
 ## Cómo ejecutarlo
 
@@ -10,179 +12,155 @@ Necesitas [Node.js](https://nodejs.org) (versión LTS).
 
 ```bash
 npm install
-npm run dev        # abre http://localhost:5500
+npm run dev        # abre http://localhost:5173
 npm run build      # genera la carpeta dist/ para publicar
 ```
 
 ### Cuentas de demostración
 
-Contraseña: se la pide al equipo (no se publica aquí). Sin conexión a la base, la pantalla de ingreso muestra la clave de la demo local. Cada rol entra a su pantalla y solo ve sus secciones.
+Contraseña: se la pide al equipo (no se publica aquí). Sin conexión a la base, la pantalla de ingreso muestra la clave de la demo local. Cada rol entra a su pantalla y solo ve sus secciones autorizadas (RBAC).
 
 | Correo | Rol | Entra a |
 |---|---|---|
-| analista@wayz.demo | Analista | Panel del analista |
-| lider@wayz.demo | Líder de analistas | Panel / carga del equipo |
-| gerente@wayz.demo | Gerente | Centro de comando y Gerencia |
-| legal@wayz.demo | Asesor legal | Área legal |
-| auditor@wayz.demo | Auditor | Historial y auditoría |
-| tecnico@wayz.demo | Analista técnico | Consulta avanzada (SQL) |
-| admin@wayz.demo | Administrador | Usuarios, accesos y reglas |
+| `analista@wayz.demo` | Analista | Panel del analista |
+| `lider@wayz.demo` | Líder de analistas | Panel / carga del equipo |
+| `gerente@wayz.demo` | Gerente | Centro de comando y Gerencia |
+| `legal@wayz.demo` | Asesor legal | Área legal |
+| `auditor@wayz.demo` | Auditor | Historial y auditoría |
+| `tecnico@wayz.demo` | Analista técnico | Consulta avanzada (SQL) |
+| `admin@wayz.demo` | Administrador | Usuarios, accesos y reglas |
 
 Los botones de la pantalla de login rellenan las cuentas automáticamente.
+
+---
 
 ## Estructura del proyecto
 
 ```
 PROYECTO_WAYZ_HTML/
 ├── index.html                  única página; la app se dibuja dentro de <div id="app">
-├── package.json                dependencias y comandos (dev, build, preview)
-├── package-lock.json           versiones exactas de las dependencias (se sube a GitHub)
-├── vite.config.js              configuración de Vite (rutas relativas, sirve en cualquier hosting estático)
-├── README.md
-├── .gitignore                  excluye node_modules/, dist/, .claude/ y .env (la clave)
-├── .env.example                plantilla para poner la clave de Gemini (se copia como .env)
+├── package.json                dependencias y comandos (dev, build, agente, preview)
+├── package-lock.json           versiones exactas de dependencias
+├── vite.config.js              configuración de Vite (rutas relativas, hosting estático)
+├── README.md                   documentación técnica del proyecto
+├── .gitignore                  excluye node_modules/, dist/, .env, etc.
+├── .env.example                plantilla de variables (Gemini, Supabase, Resend)
 ├── base-de-datos/              SQL de la base de datos (esquema, seguridad y datos de ejemplo)
-├── agente/                     agente de IA autónomo (se ejecuta en la terminal, ver más abajo)
-│   ├── ejecutar.js             arranca el agente (todos los casos o modo vigilar)
-│   ├── agente.js               ciclo del agente: Gemini decide qué herramientas usar
-│   ├── herramientas.js         las 5 herramientas y su descripción para Gemini
-│   ├── datos-agente.js         datos de ejemplo que consultan las herramientas
-│   ├── bandeja-entrada.json    reclamos «nuevos» que el agente detecta solo en modo vigilar
-│   └── prueba.js               pruebas con un Gemini simulado (no usa internet ni clave)
-├── src/
-│   ├── main.js                 arranque de la aplicación
-│   ├── assets/                 logos (logo_con_letras.png, logo_sin_letras.png)
-│   ├── config/
-│   │   ├── roles.js            roles, permisos y cuentas de demostración
-│   │   └── rutas.js            mapa del sitio, pestañas y permisos por ruta
-│   ├── datos/
-│   │   ├── datos.js            casos y notificaciones de ejemplo (reemplazable por una API)
-│   │   ├── agente.js           lee las sugerencias del agente
-│   │   └── resultados-agente.json   evaluaciones que dejó el agente (lo genera npm run agente)
-│   ├── nucleo/                 lo que sirve a toda la app
-│   │   ├── app.js              enrutador: lee #/ruta, comprueba permisos y dibuja la vista
-│   │   ├── almacen.js          estado: sesión y preferencias
-│   │   ├── dialogo.js          ventanas <dialog> y confirmaciones
-│   │   ├── formularios.js      validación accesible de formularios
-│   │   ├── accesibilidad.js    mejoras automáticas (etiquetas, tablas ordenables…)
-│   │   ├── interacciones.js    botones y formularios mediante atributos data-*
-│   │   ├── avisos.js           avisos en pantalla y para lectores de pantalla
-│   │   ├── preferencias.js     aplica tema, tamaño de texto y modo sol
-│   │   ├── sonido.js           aviso sonoro de alertas críticas
-│   │   └── dom.js              utilidades del DOM
-│   ├── componentes/
-│   │   ├── estructura.js       cabecera, menú lateral y pestañas
-│   │   ├── expediente.js       cabecera común de las pantallas del expediente
-│   │   └── agente.js           tarjeta e insignia «Evaluación del agente»
-│   ├── vistas/                 39 pantallas, una por archivo (solo HTML)
-│   ├── comportamientos/        21 archivos con la lógica de las vistas que la necesitan (solo JavaScript)
-│   ├── dialogos/               8 ventanas emergentes: recuperar, alerta, asistente,
-│   │                           decisión, escalar, plazo, firma y soporte
-│   └── styles/
-│       ├── index.css           orden de carga de los estilos
-│       ├── tokens.css          colores, sombras y medidas con nombre
-│       ├── temas.css           temas: clara, cálida, oscura, alto contraste y modo sol
-│       ├── base.css            reinicio, tipografía, foco visible, avisos
-│       ├── layout.css          cabecera, menú y zona de contenido (responsive)
-│       ├── botones.css · componentes.css · compartido.css · dialogos.css · agente.css
-│       └── vistas/             CSS propio de cada vista (con alcance .v-nombre)
-└── referencia/
-    └── wireframes-html/        las 46 pantallas sueltas anteriores (solo consulta; se puede borrar)
+│   ├── 01-esquema.sql          17 tablas, índices, bitácora inmutable y vista_bandeja
+│   ├── 02-seguridad.sql        políticas de seguridad por filas (RLS) y roles
+│   └── 03-datos-ejemplo.sql    semillas de prueba y vínculos relacionales
+├── agente/                     subsistema del agente de IA y notificaciones
+│   ├── ejecutar.js             runner CLI del agente (modo batch o watcher --vigilar)
+│   ├── agente.js               orquestador: Gemini con function calling o fallback de reglas
+│   ├── herramientas.js         definición de las 5 herramientas de auditoría
+│   ├── datos-agente.js         datos de expedientes simulados
+│   ├── bandeja-entrada.json    cola de reclamos entrantes para el modo vigilar
+│   ├── notificador-email.js    servicio de envío de alertas por correo con Resend
+│   ├── subir-bd.js             sincronización de evaluaciones hacia Supabase
+│   └── prueba.js               pruebas del agente con Gemini simulado
+├── supabase/                   configuración de servicios serverless en Supabase
+│   └── functions/
+│       └── notificar-analisis/ Edge Function para enviar alertas desde la UI vía Resend
+├── src/                        frontend SPA en Vanilla JS
+│   ├── main.js                 arranque de la aplicación y restauración de sesión
+│   ├── assets/                 recursos gráficos (logos)
+│   ├── config/                 roles, permisos y rutas protegidas
+│   ├── datos/                  repositorio de datos, cliente Supabase y resultados del agente
+│   ├── nucleo/                 enrutador, almacén reactivo, accesibilidad, avisos e interacciones
+│   ├── componentes/            componentes reutilizables (estructura, expediente, tarjeta agente)
+│   ├── vistas/                 39 pantallas modulares (renderers HTML puros)
+│   ├── comportamientos/        controladores de eventos e interacción por pantalla
+│   ├── dialogos/               ventanas emergentes modales (<dialog>)
+│   └── styles/                 hojas de estilo CSS modulares y tokens de diseño
+└── referencia/                 wireframes HTML de referencia
 ```
 
-Regla de oro: **vista = HTML, comportamiento = JS, estilos = CSS**, cada uno en su archivo. Lo repetido (cabecera, menú, pestañas, cabecera del expediente, botones, tablas) está escrito una sola vez.
+---
 
-## Agente de IA autónomo
+## Agente de IA y Detección de Fraude
 
-El **Agente Wayz** revisa los reclamos nuevos sin que nadie se lo pida y deja a cada uno priorizado y explicado para el analista. Es un agente porque tiene un objetivo, **decide solo** qué herramientas usar y en qué orden, y **actúa** (registra su evaluación). Un humano toma siempre la decisión final: el agente nunca aprueba ni rechaza.
+El **Agente Wayz** analiza reclamos de seguros de forma autónoma, calculando puntajes de riesgo objetivos y recomendando acciones claras al analista humano:
 
 ```
-Reclamo nuevo → el Agente (Gemini) decide:
+Reclamo nuevo → el Agente (Gemini o Reglas) decide:
    calcular_riesgo → (si el puntaje es alto) buscar_casos_similares · revisar_documentos · consultar_listas
    → registrar_evaluacion (prioridad + resumen + motivos + siguiente paso)
 ```
 
 | Herramienta | Qué hace |
 |---|---|
-| `calcular_riesgo` | Puntaje 0 a 100, con cada factor que suma puntos (explicable) |
-| `buscar_casos_similares` | Detecta redes: casos con el mismo teléfono, dirección o asegurado |
-| `revisar_documentos` | Documentos entregados, faltantes e inconsistencias |
-| `consultar_listas` | Coincidencias en listas de sancionados |
-| `registrar_evaluacion` | Acción final: guarda el resultado |
+| `calcular_riesgo` | Puntaje 0 a 100 ponderado por factores objetivos (explicable). |
+| `buscar_casos_similares` | Detecta redes organizadas: reclamos vinculados por teléfono, dirección o asegurado. |
+| `revisar_documentos` | Identifica documentos entregados, faltantes obligatorios e inconsistencias. |
+| `consultar_listas` | Cruce con listas restrictivas de prevención de lavado (UIF / OFAC). |
+| `registrar_evaluacion` | Acción terminal obligatoria que consolida la recomendación para el analista. |
 
-**Cómo usarlo** (en la terminal, dentro de la carpeta del proyecto):
+### Comandos del Agente
 
 ```bash
-npm run agente            # evalúa todos los reclamos y guarda src/datos/resultados-agente.json
-npm run agente:vigilar    # queda trabajando solo: evalúa cada reclamo nuevo que aparezca en agente/bandeja-entrada.json
-npm run agente:prueba     # 6 pruebas automáticas con un Gemini simulado
+npm run agente            # Evalúa todos los reclamos y guarda src/datos/resultados-agente.json
+npm run agente:vigilar    # Modo observador: vigila agente/bandeja-entrada.json y evalúa casos nuevos
+npm run agente:subir      # Sube las evaluaciones locales a la tabla evaluaciones_agente en Supabase
+npm run agente:prueba     # Ejecuta pruebas automáticas con Gemini simulado
 ```
 
-**Con Gemini:** crea tu clave en [Google AI Studio](https://aistudio.google.com), copia `.env.example` como `.env` y pega la clave en `GEMINI_API_KEY=`. El archivo `.env` está en `.gitignore`: **nunca se sube a GitHub**. Sin clave, o si Gemini falla o se agota la cuota, el agente sigue funcionando con reglas (las mismas herramientas, sin IA) y lo indica en pantalla.
+---
 
-**Dónde se ve en la aplicación:** columna «Sugerido por el agente» y resumen en el panel del analista, vista previa de la bandeja y tarjeta «Evaluación del agente» en el expediente. Cada evaluación dice qué herramientas usó y si el cerebro fue Gemini o las reglas.
+## Notificaciones por Correo (Servicio Resend)
 
-**Seguridad y privacidad:** el puntaje siempre es el de la herramienta (el modelo explica, no inventa cifras); la clave nunca está en el código del navegador; no uses datos reales de asegurados con la capa gratuita de Gemini, porque Google puede usarlos para mejorar sus productos.
+WAYZ cuenta con una integración dual para notificar los análisis de riesgo a través de **Resend**:
 
-## Agente dentro de la app
+### 1. Envíos automáticos desde el Agente (`agente/ejecutar.js`)
+- Al procesar cada reclamo mediante `npm run agente` o `npm run agente:vigilar`, se invoca `enviarAlertaAnalisis()` desde [agente/notificador-email.js](file:///c:/Users/Jack/Desktop/UNIVERSIDAD/CICLO_4/HCI/APP_WAYZ/PROYECTO-HCI-WAYZ/agente/notificador-email.js).
+- Genera un correo en HTML semántico con la prioridad, puntaje, motivos e indicaciones sugeridas.
+- Incorpora una pausa de 500 ms entre peticiones para respetar los límites de tasa (Rate Limits) de Resend.
+- Aislado contra fallos: si la API de correo no responde o no hay conexión, el agente continúa su flujo de evaluación y persistencia sin interrupciones.
 
-Al registrar un reclamo (o subir adjuntos) la app ejecuta el agente en **modo reglas** (`src/datos/agente-reglas.js`): calcula el puntaje con los datos reales de la base, guarda la evaluación y prioriza el caso. Con `npm run agente` (y la clave de Gemini en `.env`) la evaluación se enriquece con IA; `npm run agente:subir` la guarda en la base.
+### 2. Envío a demanda desde la UI (Producción / Supabase Edge Functions)
+- En la vista del expediente de cada reclamo, la tarjeta del agente incluye el botón:  
+  **`✉ Enviar análisis a mi correo`**
+- Al presionarlo, el frontend invoca de forma segura la Edge Function `notificar-analisis` alojada en Supabase, enviando el correo del analista en sesión (`obtenerSesion()?.correo`) como destinatario.
+- **Seguridad:** Las credenciales privadas (`RESEND_API_KEY`) residen en los secretos de Supabase y **nunca se exponen en el navegador**.
 
-## Base de datos (PostgreSQL en Supabase)
+#### Configuración de variables de entorno
 
-La carpeta `base-de-datos/` guarda el SQL para recrear la base desde cero, en este orden:
+En tu archivo `.env` (backend) y en los secretos de Supabase (`supabase secrets set`):
+```env
+# Claves de Gemini y Supabase
+GEMINI_API_KEY=tu_clave_de_gemini
+GEMINI_MODEL=gemini-2.5-flash
+VITE_SUPABASE_URL=https://tu-proyecto.supabase.co
+VITE_SUPABASE_PUBLISHABLE_KEY=tu_clave_publica_anon
 
-| Archivo | Qué hace |
+# Notificaciones por correo (Resend)
+RESEND_API_KEY=re_tu_api_key_de_resend
+EMAIL_FROM="Wayz Alertas <alertas@tudominio.com>"
+EMAIL_ANALISTA_DEFAULT="analista@wayz.demo"
+```
+
+Para desplegar la Edge Function en Supabase:
+```bash
+npx supabase secrets set RESEND_API_KEY=re_... EMAIL_FROM="Wayz Alertas <alertas@tudominio.com>"
+npx supabase functions deploy notificar-analisis
+```
+
+---
+
+## Base de Datos (PostgreSQL en Supabase)
+
+La carpeta `base-de-datos/` contiene los scripts DDL y DML para recrear el entorno completo:
+
+| Archivo | Contenido y Función |
 |---|---|
-| `01-esquema.sql` | 17 tablas, índices, la bitácora de solo agregar (un trigger bloquea editar o borrar) y la vista `vista_bandeja` |
-| `02-seguridad.sql` | Seguridad por filas (RLS): sin cuenta no se ve nada y cada rol solo accede a lo suyo |
-| `03-datos-ejemplo.sql` | Los mismos casos, usuarios y evaluaciones del agente que usa la aplicación (datos ficticios) |
+| `01-esquema.sql` | 17 tablas relacionales, índices, bitácora inmutable (trigger de bloqueo para UPDATE/DELETE) y vista consolidada `vista_bandeja`. |
+| `02-seguridad.sql` | Políticas Row Level Security (RLS) por rol, esquema `private` para resolver el usuario actual y políticas de almacenamiento seguro en `storage.objects`. |
+| `03-datos-ejemplo.sql` | Casos de prueba vinculados diseñados para disparar las alertas de fraude del agente (brechas temporales, pólizas recientes y redes cruzadas). |
 
-Las contraseñas **no** se guardan en las tablas: las gestiona Supabase Auth. Al crear una cuenta en Authentication con el mismo correo de un usuario (por ejemplo `analista@wayz.demo`), el perfil se enlaza solo.
+---
 
-> **Conexión:** copia `.env.example` como `.env.local` y pega la URL y la clave pública (publishable) de Supabase. Las cuentas de demostración son reales en Supabase Auth (la contraseña no se publica; pídesela al equipo). `npm run agente:subir` guarda en la base las evaluaciones del agente (entra con la cuenta del rol técnico). Las claves **no** se suben a GitHub (`.gitignore`); cambia las contraseñas demo si publicas el proyecto.
+## Principios de Diseño, HCI y Accesibilidad (WCAG 2.2)
 
-## Cómo se aplican los principios del curso
-
-**Diseño de interacción y heurísticas de Nielsen**
-
-| Heurística | Dónde se ve |
-|---|---|
-| 1. Visibilidad del estado | Avisos tras cada acción, «Actualizado hace N s», conteo de resultados, barras de progreso |
-| 3. Control y libertad | Cancelar en cada ventana, Esc cierra, cerrar sesión, «Quitar filtros» |
-| 4. Consistencia | Mismo botón, tabla, etiqueta y ventana en toda la app |
-| 5. Prevención de errores | Confirmación antes de decidir, firmar o reasignar; fecha futura bloqueada; consultas solo SELECT |
-| 6. Reconocer antes que recordar | Menú y pestañas siempre visibles; migas de pan; cuentas demo a un clic |
-| 7. Eficiencia | Atajo `/` para buscar; tablas ordenables; búsqueda global |
-| 9. Recuperación de errores | Mensajes que dicen qué corregir, con ejemplo (`nombre@empresa.com`) |
-| 10. Ayuda | Soporte técnico en el menú de usuario y en el login |
-
-**Arquitectura de información:** una sola estructura para web y móvil (menú por secciones → pestañas → pantallas); en móvil el menú pasa a un panel con el botón ☰. Cada rol ve solo sus secciones (HU-027).
-
-**Diseño inclusivo y accesibilidad (WCAG 2.2)**
-
-- **Uso al sol:** botón **«Modo sol»** en la cabecera: negro sobre blanco, bordes gruesos, sin sombras ni grises claros, texto más grueso y 15 % más grande. Más temas en *Preferencias de lectura*: Clara, Cálida, Oscura y Alto contraste; tamaño de texto y contraste ajustables. Se recuerdan en el navegador y se respeta la preferencia del sistema (modo oscuro / más contraste).
-- **Perceptible:** contraste mínimo 4,5:1 en texto y 3:1 en bordes de controles; el color nunca es la única señal (iconos ⚠ ✔, texto en etiquetas y errores); texto en `rem` que se amplía sin romperse.
-- **Operable:** todo se usa con teclado; foco visible de 3 px; enlace «Saltar al contenido»; objetivos táctiles de 44 px; el foco pasa al título al cambiar de pantalla; ventanas con `<dialog>` (atrapan el foco y se cierran con Esc).
-- **Comprensible:** `<label>` en cada campo, `aria-invalid` y `aria-describedby` en errores, mensajes en español claro.
-- **Robusto:** HTML semántico (`header`, `nav`, `main`, `table` con `th scope`), regiones `aria-live` para anunciar cambios, interruptores con `role="switch"`.
-- **Preferencias del usuario:** `prefers-reduced-motion` desactiva animaciones.
-
-**Responsive:** diseño de móvil a escritorio con `grid`, `flex` y `@media`; las tablas se desplazan dentro de una región accesible; no hay desplazamiento horizontal de página.
-
-## Publicación
-
-Todavía no está definido dónde se publicará. `npm run build` genera la carpeta `dist/`, que funciona en cualquier hosting estático porque usa rutas relativas y rutas con `#`. Después de publicar, repite el recorrido completo en la dirección pública (login → panel → expediente → decisión).
-
-## Verificación realizada
-
-- Las 39 pantallas y las 8 ventanas cargan sin errores de JavaScript con los 7 roles; los permisos redirigen con un aviso.
-- Auditoría automática: controles con nombre, un solo `h1`, sin ids repetidos, sin saltos de encabezados.
-- Pruebas automáticas de los flujos principales (login correcto e incorrecto, filtros, búsqueda, decisión con confirmación, registro de reclamo, modo sol, temas, menú móvil).
-- **Pendiente recomendado:** recorrer la app solo con teclado, pasar Lighthouse y WAVE sobre la versión publicada y probar con un lector de pantalla real (NVDA / VoiceOver). Una auditoría automática no certifica accesibilidad.
-
-## Limitaciones conocidas
-
-- Los datos y las cuentas son de demostración (ficticios) aunque viven en una base real.
-- Algunas pantallas del expediente (identidad, redes, informe) muestran el mismo contenido de ejemplo para cualquier caso.
-- Las versiones móviles M-01…M-42 de Figma no se compararon una por una: la app es responsive, pero no es una copia píxel a píxel de esos wireframes.
+- **Heurísticas de Nielsen:** Visibilidad del estado mediante avisos en vivo (`toast` y `aria-live`), prevención de errores con confirmaciones antes de dictámenes o firmas, navegación consistente y atajos de teclado (`/` para buscar, `Esc` para modales).
+- **Modo Sol y Temas:** Botón dedicado en la cabecera para alto brillo en exteriores (negro sobre blanco, tipografía reforzada y mayor tamaño), sumado a temas Clara, Cálida, Oscura y Contraste.
+- **Accesibilidad Total:** Controles 100% navegables por teclado, indicadores de foco de 3 px, etiquetas descriptivas (`<label>`, `aria-describedby`) y contraste superior a 4.5:1.
+- **Diseño Responsive:** Layout fluido que adapta menús, tablas accesibles y paneles de trabajo desde pantallas móviles hasta monitores de escritorio.

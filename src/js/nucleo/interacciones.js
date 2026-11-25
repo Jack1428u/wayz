@@ -46,7 +46,8 @@ export function iniciarInteracciones() {
       }
 
       const sesion = obtenerSesion();
-      const emailDestino = sesion?.correo || null;
+      const esCuentaDemo = sesion?.correo?.endsWith('@wayz.demo');
+      const emailDestino = esCuentaDemo ? null : (sesion?.correo || null);
 
       botonNotificar.disabled = true;
       const textoOriginal = botonNotificar.textContent;

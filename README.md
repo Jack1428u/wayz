@@ -115,7 +115,7 @@ npm run agente:prueba     # Ejecuta pruebas automáticas con Gemini simulado
 WAYZ cuenta con una integración dual para notificar los análisis de riesgo a través de **Resend**:
 
 ### 1. Envíos automáticos desde el Agente (`agente/ejecutar.js`)
-- Al procesar cada reclamo mediante `npm run agente` o `npm run agente:vigilar`, se invoca `enviarAlertaAnalisis()` desde [agente/notificador-email.js](file:///c:/Users/Jack/Desktop/UNIVERSIDAD/CICLO_4/HCI/APP_WAYZ/PROYECTO-HCI-WAYZ/agente/notificador-email.js).
+- Al procesar cada reclamo mediante `npm run agente` o `npm run agente:vigilar`, se invoca `enviarAlertaAnalisis()` desde **agente/notificador-email.js**.
 - Genera un correo en HTML semántico con la prioridad, puntaje, motivos e indicaciones sugeridas.
 - Incorpora una pausa de 500 ms entre peticiones para respetar los límites de tasa (Rate Limits) de Resend.
 - Aislado contra fallos: si la API de correo no responde o no hay conexión, el agente continúa su flujo de evaluación y persistencia sin interrupciones.

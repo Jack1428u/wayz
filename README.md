@@ -104,7 +104,11 @@ npm run agente:subir      # Sube las evaluaciones locales a la tabla evaluacione
 npm run agente:prueba     # Ejecuta pruebas automáticas con Gemini simulado
 ```
 
+<<<<<<< HEAD
 ---
+=======
+**Con Gemini:** crea tu clave en [Google AI Studio](https://aistudio.google.com), copia `.env.example` como `.env` y pega la clave en `GEMINI_API_KEY=`. El archivo `.env` está en `.gitignore`: **nunca se sube a GitHub**. Sin clave, o si Gemini falla o se agota la cuota, el agente sigue funcionando con reglas (las mismas herramientas, sin IA) y lo indica en pantalla.
+>>>>>>> acf55c2fb7f7318ce047199ed4384e594ca3629c
 
 ## Notificaciones por Correo (Servicio Resend)
 
